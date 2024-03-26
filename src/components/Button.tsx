@@ -5,7 +5,7 @@ import React, { ButtonHTMLAttributes } from "react";
 interface ButtonProps
   extends ButtonHTMLAttributes<HTMLButtonElement>,
     VariantProps<typeof buttonVariants> {
-  children: React.ReactNode;
+  children?: React.ReactNode;
 }
 
 export default function Button({

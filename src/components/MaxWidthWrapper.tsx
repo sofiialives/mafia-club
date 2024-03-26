@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import cn from "@/utils/cn";
 import React from "react";
 
 interface MaxWidthWrapperProps {
@@ -12,7 +12,7 @@ export default function MaxWidthWrapper({
 }: MaxWidthWrapperProps) {
   return (
     <section
-      className={clsx(
+      className={cn(
         "mx-auto w-full max-w-screen-xl px-2.5 md:px-14",
         className
       )}

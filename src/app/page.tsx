@@ -1,3 +1,4 @@
+import Button from "@/components/Button";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import GameTable from "@/components/Table/GameTable";
 import GameTableBody from "@/components/Table/GameTableBody";
@@ -20,7 +21,9 @@ export default function Home() {
       </div>
       <GameTable
         headers={header.map((h) => (
-          <GameTableHeaders action key={h}>{h}</GameTableHeaders>
+          <GameTableHeaders action key={h}>
+            {h}
+          </GameTableHeaders>
         ))}
       >
         {body.map((b, index) => (

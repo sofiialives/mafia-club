@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import cn from "@/utils/cn";
 import React from "react";
 
 interface GameTableBodyProps {
@@ -16,7 +16,7 @@ export default function GameTableBody({
 }: GameTableBodyProps) {
   return (
     <td
-      className={clsx(
+      className={cn(
         "bg-white text-black font-normal text-sm border border-[#CECECE] p-2",
         `text-${align}`,
         action &&

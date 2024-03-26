@@ -1,4 +1,4 @@
-import clsx from "clsx";
+import cn from "@/utils/cn";
 import React from "react";
 
 interface GameTableHeadersProps {
@@ -12,7 +12,7 @@ export default function GameTableHeaders({
 }: GameTableHeadersProps) {
   return (
     <th
-      className={clsx(
+      className={cn(
         "text-center p-2 border border-t-0 border-[#CECECE]",
         action
           ? "bg-[#FDD901] text-black text-base font-medium w-full"

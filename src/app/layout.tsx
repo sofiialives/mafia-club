@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import "./globals.css";
-import clsx from "clsx";
+import cn from "@/utils/cn";
 
 const font = Montserrat({ subsets: ["latin"] });
 
@@ -21,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="h-full">
       <body
-        className={clsx(
+        className={cn(
           "relative h-full font-sans antialiased",
           font.className
         )}

@@ -11,13 +11,13 @@ export default function MaxWidthWrapper({
   children,
 }: MaxWidthWrapperProps) {
   return (
-    <div
+    <section
       className={clsx(
         "mx-auto w-full max-w-screen-xl px-2.5 md:px-14",
         className
       )}
     >
       {children}
-    </div>
+    </section>
   );
 }

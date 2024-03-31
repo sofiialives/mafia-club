@@ -1,7 +1,6 @@
 import cn from "@/utils/cn";
 import React from "react";
 import { Control, Controller, FieldValues } from "react-hook-form";
-import styles from "./input.module.css";
 
 interface TextareaControllerProps {
   name: string;
@@ -26,11 +25,7 @@ export default function TextAreaController({
       render={({ field }) => (
         <textarea
           {...field}
-          className={cn(
-            styles.shadow,
-            "h-6 border border-black shadow-inner bg-[#FDD901] rounded-[42px] text-black px-5 py-1 overflow-hidden",
-            className
-          )}
+          className={cn("h-6 overflow-hidden", className)}
           placeholder={placeholder}
         />
       )}

@@ -6,7 +6,7 @@ import cn from "@/utils/cn";
 interface InputControllerProps {
   name: string;
   control: Control<FieldValues, any>;
-  defaultValue: string;
+  defaultValue?: string;
   type: HTMLInputTypeAttribute;
   min?: number;
   max?: number;

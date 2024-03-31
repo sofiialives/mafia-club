@@ -1,4 +1,5 @@
 "use client";
+import CommentTable from "@/components/Game/Comment/CommentTable";
 import GameProtocolTable from "@/components/Game/Protocol/GameProtocolTable";
 import Tournament from "@/components/Game/Tournament/Tournament";
 import WinnerTable from "@/components/Game/Winner/WinnerTable";
@@ -21,6 +22,7 @@ export default function Protocol({}: ProtocolProps) {
             <Tournament />
             <GameProtocolTable />
             <WinnerTable />
+            <CommentTable />
           </div>
         </form>
       </MaxWidthWrapper>

@@ -1,6 +1,7 @@
 "use client";
 import GameProtocolTable from "@/components/Game/Protocol/GameProtocolTable";
 import Tournament from "@/components/Game/Tournament/Tournament";
+import WinnerTable from "@/components/Game/Winner/WinnerTable";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { useForm } from "react-hook-form";
 
@@ -19,6 +20,7 @@ export default function Protocol({}: ProtocolProps) {
           <div className="flex flex-col gap-5 w-[604px]">
             <Tournament />
             <GameProtocolTable />
+            <WinnerTable />
           </div>
         </form>
       </MaxWidthWrapper>

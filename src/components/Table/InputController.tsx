@@ -1,7 +1,7 @@
-import cn from "@/utils/cn";
 import React, { HTMLInputTypeAttribute } from "react";
 import { Control, Controller, FieldValues } from "react-hook-form";
 import styles from "./input.module.css";
+import cn from "@/utils/cn";
 
 interface InputControllerProps {
   name: string;
@@ -25,21 +25,23 @@ export default function InputController({
   className,
 }: InputControllerProps) {
   return (
-    <Controller
-      name={name}
-      control={control}
-      defaultValue={defaultValue}
-      render={({ field }) => (
-        <input
-          {...field}
-          step=".1"
-          type={type}
-          min={min}
-          max={max}
-          placeholder={placeholder}
-          className={cn(styles.input, "p-1 w-36", className)}
-        />
-      )}
-    />
+    <div>
+      <Controller
+        name={name}
+        control={control}
+        defaultValue={defaultValue}
+        render={({ field }) => (
+          <input
+            {...field}
+            step=".1"
+            type={type}
+            min={min}
+            max={max}
+            placeholder={placeholder}
+            className={cn(styles.input, "p-1", className)}
+          />
+        )}
+      />
+    </div>
   );
 }

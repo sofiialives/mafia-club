@@ -1,5 +1,6 @@
 "use client";
 import GameProtocolTable from "@/components/Game/Protocol/GameProtocolTable";
+import Tournament from "@/components/Game/Tournament/Tournament";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { useForm } from "react-hook-form";
 
@@ -15,7 +16,10 @@ export default function Protocol({}: ProtocolProps) {
     <main>
       <MaxWidthWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <GameProtocolTable />
+          <div className="flex flex-col gap-5 w-[604px]">
+            <Tournament />
+            <GameProtocolTable />
+          </div>
         </form>
       </MaxWidthWrapper>
     </main>

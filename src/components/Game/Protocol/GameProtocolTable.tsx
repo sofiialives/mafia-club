@@ -5,7 +5,7 @@ import ProtocolBody from "./ProtocolBody";
 
 const GameProtocolTable = () => {
   return (
-    <table className="border-collapse border">
+    <table className="w-full">
       <thead>
         <ProtocolHead />
       </thead>

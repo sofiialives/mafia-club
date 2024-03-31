@@ -27,7 +27,7 @@ export default function SelectController({
         <select
           {...field}
           className={cn(
-            "bg-[#FDD901] border border-black shadow-inner w-18 rounded-full text-center",
+            "bg-[#FDD901] border border-black shadow-inner rounded-full text-center",
             styles.select,
             className
           )}

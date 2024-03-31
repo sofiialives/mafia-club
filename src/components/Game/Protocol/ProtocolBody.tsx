@@ -2,8 +2,10 @@
 import ButtonController from "@/components/Table/ButtonController";
 import InputController from "@/components/Table/InputController";
 import SelectController from "@/components/Table/SelectController";
+import cn from "@/utils/cn";
 import React from "react";
 import { useForm } from "react-hook-form";
+import styles from "../../Table/input.module.css";
 
 interface ProtocolBodyProps {}
 
@@ -20,7 +22,7 @@ export default function ProtocolBody({}: ProtocolBodyProps) {
     <>
       {rows.map((rowNumber) => (
         <tr key={rowNumber} className="bg-white text-black text-sm">
-          <td className="border border-[#CECECE] p-2 w-10">{rowNumber}</td>
+          <td className="border border-[#CECECE] p-2">{rowNumber}</td>
           <td className="border border-[#CECECE] p-2">
             <InputController
               name={`players[${rowNumber}].playerName`}
@@ -28,6 +30,7 @@ export default function ProtocolBody({}: ProtocolBodyProps) {
               defaultValue=""
               placeholder="Никнейм"
               type="text"
+              className="w-32"
             />
           </td>
           <td className="border border-[#CECECE] p-2">
@@ -49,6 +52,8 @@ export default function ProtocolBody({}: ProtocolBodyProps) {
                 name={`players[${rowNumber}].${foulType}`}
                 control={control}
                 type="button"
+                variant="protocol"
+                foul
               />
             </td>
           ))}
@@ -61,7 +66,10 @@ export default function ProtocolBody({}: ProtocolBodyProps) {
                 type="number"
                 min={0}
                 max={1}
-                className="w-12 h-6 border border-black shadow-inner bg-[#FDD901] rounded-[42px] text-black text-center"
+                className={cn(
+                  styles.shadow,
+                  "w-12 h-6 border border-black shadow-inner bg-[#FDD901] rounded-[42px] text-black text-center"
+                )}
               />
             </td>
           ))}

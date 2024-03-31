@@ -17,4 +17,9 @@
   background-position: 62px center;
   padding-right: 24px;
   padding-left: 6px;
+  box-shadow: 0px 4px 4px 0px #00000040 inset;
+}
+
+.shadow {
+  box-shadow: 0px 4px 4px 0px #00000040 inset;
 }

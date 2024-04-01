@@ -38,10 +38,13 @@ const buttonVariants = cva(
         secondary: "py-3 px-7",
         protocol: "w-12 h-6",
         radio: "w-5 h-5 bg-white",
+        timer: "w-[72px] h-[72px]",
+        btnTimer: "py-2 px-4 w-[186px] h-8",
       },
       size: {
         sm: "text-sm font-normal",
         md: "text-base font-bold",
+        xl: "text-4xl font-bold",
       },
     },
     defaultVariants: {

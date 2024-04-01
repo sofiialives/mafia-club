@@ -35,7 +35,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         primary: "py-2 px-4",
-        secondary: "py-3 px-7",
+        secondary: "py-3 px-16",
         protocol: "w-12 h-6",
         radio: "w-5 h-5 bg-white",
         timer: "w-[72px] h-[72px]",

@@ -10,6 +10,7 @@
 
 body {
   background-color: #000;
+  color: #FFFFFF;
 }
 
 a {
@@ -20,3 +21,26 @@ a {
 ul {
   list-style: none;
 }
+
+/* Градієнт для бордеру */
+.border-gradient:before {
+  content: '';
+  position: absolute;
+  top: -2px; /* Виберіть потрібний відступ для верхнього бордеру */
+  left: 0;
+  right: 0;
+  height: 2px; /* Ширина верхнього бордеру */
+  background: linear-gradient(to right, #3E6259 0%, #FDD901 100%); /* Градієнт */
+}
+
+.border-gradient:after {
+  content: '';
+  position: absolute;
+  bottom: -2px; /* Виберіть потрібний відступ для нижнього бордеру */
+  left: 0;
+  right: 0;
+  height: 2px; /* Ширина нижнього бордеру */
+  background: linear-gradient(to right, #3E6259 0%, #FDD901 100%); /* Градієнт */
+}
+
+

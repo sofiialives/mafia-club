@@ -30,7 +30,7 @@ const Map = () => {
         const marker = L.marker([47.48501, 19.06222], {
           icon: customMarkerIcon,
         }).addTo(map);
-        // marker.bindPopup("<b>Forever yang</b><br>We play here.").openPopup();
+        marker.bindPopup("<b>Forever yang</b><br>Мы играем здеесь.").openPopup();
 
         mapRef.current = map;
       }

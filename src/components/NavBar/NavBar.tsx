@@ -4,11 +4,11 @@ import NavLinkItem from "./NavLinkItem.jsx"
 
 type Props = {};
 const navMenu = [
-  { id: "main", href: "/", title: "Main" },
-  { id: "find", href: "/find-game", title: "Find Game" },
-  { id: "game", href: "/game", title: "Game" },
-  { id: "about", href: "/#about", title: "About" },
-  { id: "contact", href: "/#contact", title: "Contact" },
+  { id: "main", href: "/", title: "Главная" },
+  { id: "about", href: "/#about", title: "О клубе" },
+  { id: "contact", href: "/#contact", title: "Контакты" },
+  { id: "find", href: "/find-game", title: "Найти игру" },
+  { id: "game", href: "/game", title: "Играть" },
 ];
 
 const NavBar = (props: Props) => {

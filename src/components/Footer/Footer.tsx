@@ -65,10 +65,10 @@ const Footer = (props: Props) => {
             <Link href="#start" className="cursor-pointer">
               Главная
             </Link>
-            <button className="cursor-pointer">Условия и положения</button>
-            <button className="cursor-pointer">
+            <Link href="/terms" className="cursor-pointer">Условия и положения</Link>
+            <Link href="/privacy" className="cursor-pointer">
               Политика конфиденциальности
-            </button>
+            </Link>
           </nav>
           <p>Copyright (c) 2024 TeamForce design All Rights Reserved</p>
         </div>

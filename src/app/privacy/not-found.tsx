@@ -6,9 +6,9 @@ interface NotFoundProps {}
 export default function NotFound({}: NotFoundProps) {
   return (
     <div>
-      <h2>Not Found</h2>
-      <p>Sorry, the page you are looking for does not exist.</p>
-      <Link href="/">Return Home</Link>
+      <h2>Не найдено</h2>
+      <p>Извините, страница которую вы ищите, не существует.</p>
+      <Link href="/">Вернуться на главную</Link>
     </div>
   );
 }

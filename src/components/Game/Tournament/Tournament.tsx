@@ -3,14 +3,14 @@ import ButtonController from "@/components/Table/ButtonController";
 import InputController from "@/components/Table/InputController";
 import cn from "@/utils/cn";
 import React from "react";
-import { useForm } from "react-hook-form";
+import { Control, FieldValues } from "react-hook-form";
 import styles from "../../Table/input.module.css";
 
-interface TournamentProps {}
+interface TournamentProps {
+  control: Control<FieldValues, any>;
+}
 
-export default function Tournament({}: TournamentProps) {
-  const { control } = useForm();
-
+export default function Tournament({ control }: TournamentProps) {
   return (
     <table className="bg-white text-black w-full text-center">
       <tbody>
@@ -21,7 +21,7 @@ export default function Tournament({}: TournamentProps) {
           >
             Турнир
             <ButtonController
-              name="radioBtn"
+              name="isTournament"
               control={control}
               type="button"
               variant="radio"
@@ -50,7 +50,7 @@ export default function Tournament({}: TournamentProps) {
             <InputController
               name="tableNum"
               control={control}
-              defaultValue=""
+              defaultValue={null}
               type="number"
               className={cn(
                 styles.shadow,
@@ -63,7 +63,7 @@ export default function Tournament({}: TournamentProps) {
             <InputController
               name="gameNum"
               control={control}
-              defaultValue=""
+              defaultValue={null}
               type="number"
               className={cn(
                 styles.shadow,

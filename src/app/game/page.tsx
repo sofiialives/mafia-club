@@ -1,5 +1,4 @@
 "use client";
-import Button from "@/components/Button";
 import CommentTable from "@/components/Game/Comment/CommentTable";
 import GameActionTable from "@/components/Game/GameAction/GameActionTable";
 import GameProtocolTable from "@/components/Game/Protocol/GameProtocolTable";
@@ -7,34 +6,68 @@ import Timer from "@/components/Game/Timer/Timer";
 import Tournament from "@/components/Game/Tournament/Tournament";
 import WinnerTable from "@/components/Game/Winner/WinnerTable";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 
 interface ProtocolProps {}
 
-export default function Protocol({}: ProtocolProps) {
-  const { handleSubmit } = useForm();
+export interface GamePlayerProps {
+  tournament: boolean;
+  nickname: string;
+  role: "Мирный" | "Мафия" | "Шериф" | "Дон";
+  fouls: number;
+  points: number;
+  addPoints: number;
+  phase: { player: number; vote: number; revote: number }[];
+}
 
-  const onSubmit = (data: any) => {
+export interface PhaseData {
+  player: number;
+  vote: number;
+  revote: number;
+}
+
+export default function Protocol({}: ProtocolProps) {
+  const { handleSubmit, reset, control } = useForm();
+
+  const onSubmit = (data) => {
     console.log(data);
+    reset();
   };
+
+  const phases: PhaseData[][] = Array.from({ length: 7 }, () =>
+    Array.from({ length: 10 }, () => ({
+      player: 0,
+      vote: 0,
+      revote: 0,
+    }))
+  );
+
   return (
     <main>
       <MaxWidthWrapper>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex gap-16 items-center justify-center">
             <div className="flex flex-col gap-5 w-[604px]">
-              <Tournament />
-              <GameProtocolTable />
-              <WinnerTable />
-              <CommentTable />
+              <Tournament control={control} />
+              <GameProtocolTable control={control} />
+              <WinnerTable control={control} />
+              <CommentTable control={control} />
             </div>
             <div className="flex flex-col gap-5 w-[485px]">
-              {[...Array(7)].map((_, index) => (
-                <GameActionTable key={index} id={index} />
+              {phases.map((_, index) => (
+                <GameActionTable
+                  key={index}
+                  id={index}
+                  control={control}
+                  phases={phases}
+                />
               ))}
             </div>
           </div>
           <Timer />
+          <button type="submit" className="text-white">
+            Submit
+          </button>
         </form>
       </MaxWidthWrapper>
     </main>

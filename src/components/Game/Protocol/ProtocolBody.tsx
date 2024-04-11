@@ -4,14 +4,14 @@ import InputController from "@/components/Table/InputController";
 import SelectController from "@/components/Table/SelectController";
 import cn from "@/utils/cn";
 import React from "react";
-import { useForm } from "react-hook-form";
+import { Control, FieldValues } from "react-hook-form";
 import styles from "../../Table/input.module.css";
 
-interface ProtocolBodyProps {}
+interface ProtocolBodyProps {
+  control: Control<FieldValues, any>;
+}
 
-export default function ProtocolBody({}: ProtocolBodyProps) {
-  const { control } = useForm();
-
+export default function ProtocolBody({ control }: ProtocolBodyProps) {
   const rows = Array.from({ length: 10 }, (_, index) => index + 1);
   const foulTypes = ["firstFoul", "secondFoul", "thirdFoul"];
   const pointsTypes = [
@@ -37,12 +37,12 @@ export default function ProtocolBody({}: ProtocolBodyProps) {
             <SelectController
               name={`players[${rowNumber}].role`}
               control={control}
-              defaultValue=""
+              defaultValue={"Мирний"}
               options={[
-                { label: "Мирний", value: "civilian" },
-                { label: "Мафія", value: "mafia" },
-                { label: "Шериф", value: "sheriff" },
-                { label: "Дон", value: "don" },
+                { label: "Мирний", value: "Мирний" },
+                { label: "Мафия", value: "Мафия" },
+                { label: "Шериф", value: "Шериф" },
+                { label: "Дон", value: "Дон" },
               ]}
             />
           </td>
@@ -62,7 +62,7 @@ export default function ProtocolBody({}: ProtocolBodyProps) {
               <InputController
                 name={`players[${rowNumber}].${point.name}`}
                 control={control}
-                defaultValue="0"
+                defaultValue={0}
                 type="number"
                 min={0}
                 max={1}

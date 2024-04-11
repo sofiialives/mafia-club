@@ -1,5 +1,4 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
 import { Control, Controller, FieldValues } from "react-hook-form";
 import Button from "../Button";
 import cn from "@/utils/cn";
@@ -7,40 +6,35 @@ import styles from "./input.module.css";
 
 interface ButtonControllerProps {
   name: string;
-  control: Control<FieldValues, any>;
-  min?: string;
-  type: "button" | "reset" | "submit";
+  control: Control<FieldValues>;
+  type?: "button" | "reset" | "submit";
+  variant?: "radio" | "primary" | "secondary" | "protocol";
   className?: string;
-  variant: "radio" | "primary" | "secondary" | "protocol";
   foul?: boolean;
 }
 
 export default function ButtonController({
   name,
   control,
-  type,
-  variant,
+  type = "button",
+  variant = "primary",
   className,
   foul,
 }: ButtonControllerProps) {
-  const [isFoul, setIsFoul] = useState(false);
-  const [isTournament, setIsTournament] = useState(false);
-
   return (
     <Controller
       name={name}
       control={control}
-      render={({ field }) => (
+      defaultValue={false}
+      render={({ field: { onChange, value } }) => (
         <Button
           type={type}
-          onClick={() =>
-            foul ? setIsFoul(!isFoul) : setIsTournament(!isTournament)
-          }
+          onClick={() => onChange(!value)}
           variant={variant}
           className={cn(
             styles.shadow,
-            isTournament && "bg-[#FDD901]",
-            isFoul && "bg-black",
+            value && "bg-[#FDD901]",
+            foul && value && "bg-black",
             className
           )}
         />

@@ -1,7 +1,9 @@
 "use client"
 import React from "react";
-import NavLinkItem from "./NavLinkItem.jsx"
-import { usePathname } from "next/navigation.js";
+import NavLinkItem from "./NavLinkItem"
+import { usePathname } from "next/navigation";
+
+
 
 type Props = {};
 const navMenu = [
@@ -19,7 +21,7 @@ const NavBar = (props: Props) => {
       <ul className="flex gap-[60px] ">
         {navMenu.map((menu) => (
           <NavLinkItem
-            className="text-[#FDD901] text-[28px] font-normal relative"
+            className="text-[#FDD901] text-[28px] font-normal relative hover:shadow-[5px_5px_15px_5px_#FDD901] rounded-lg"
             key={menu.id}
             href={menu.href}
             title={menu.title}

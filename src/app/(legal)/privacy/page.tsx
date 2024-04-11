@@ -3,7 +3,7 @@ import React from "react";
 
 type Props = {};
 
-const page = (props: Props) => {
+const PrivacyPage = (props: Props) => {
   return (
     <main>
       <section>
@@ -74,4 +74,4 @@ const page = (props: Props) => {
   );
 };
 
-export default page;
+export default PrivacyPage;

@@ -3,12 +3,11 @@ import Logo from "../Logo/Logo";
 import Link from "next/link";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import Map from "../Map/Map";
-import Instagram from "../../../public/icons/instagram.svg"
-import Youtube from "../../../public/icons/youtube.svg"
-import Telegram from "../../../public/icons/telegram.svg"
-import Tiktok from "../../../public/icons/tiktok.svg";
+import Instagram from "@/public/icons/instagram.svg"
+import Youtube from "@/public/icons/youtube.svg"
+import Telegram from "@/public/icons/telegram.svg"
+import Tiktok from "@/public/icons/tiktok.svg";
 import Image from "next/image";
-import Modal from "../Modal/Modal";
 
 const socials = [
   { id: "instagram", img: Instagram, href: "https://www.instagram.com/mafiaclub.budapest?igsh=ZjlncmFxbG9nc3hw" },
@@ -44,7 +43,7 @@ const Footer = (props: Props) => {
               >
                 <a
                   href={social.href}
-                  className="cursor-pointer "
+                  className="cursor-pointer hover:shadow-[5px_5px_15px_5px_#FDD901] rounded-full "
                   target="_blank"
                 >
                   <Image
@@ -62,11 +61,22 @@ const Footer = (props: Props) => {
         </div>
         <div className="flex flex-col gap-2 justify-center items-center w-full mt-9">
           <nav className="flex gap-14 justify-center text-[#FDD901] text-[20px] leading-[20px] font-norma">
-            <Link href="#start" className="cursor-pointer">
+            <Link
+              href="#start"
+              className="cursor-pointer hover:shadow-[5px_5px_15px_5px_#FDD901] rounded-lg"
+            >
               Главная
             </Link>
-            <Link href="/terms" className="cursor-pointer">Условия и положения</Link>
-            <Link href="/privacy" className="cursor-pointer">
+            <Link
+              href="/terms"
+              className="cursor-pointer hover:shadow-[5px_5px_15px_5px_#FDD901] rounded-lg"
+            >
+              Условия и положения
+            </Link>
+            <Link
+              href="/privacy"
+              className="cursor-pointer hover:shadow-[5px_5px_15px_5px_#FDD901] rounded-lg"
+            >
               Политика конфиденциальности
             </Link>
           </nav>

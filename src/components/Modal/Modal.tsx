@@ -1,53 +1,37 @@
-import React, { ReactNode, useEffect } from "react";
-import Close from "../../../public/icons/close.svg";
+"use client";
 
-type Props = {
-  isOpen: boolean;
-  children: ReactNode;
+import React, { Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react";
+
+export interface ModalProps {
+  children?: React.ReactNode;
+  show: boolean;
   onClose: () => void;
-};
+}
 
-const Modal = ({ isOpen, onClose, children }: Props) => {
-  useEffect(() => {
-    const handleEsc = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        onClose();
-      }
-    };
-
-    window.addEventListener("keydown", handleEsc);
-
-    return () => {
-      window.removeEventListener("keydown", handleEsc);
-    };
-  }, []);
-
-  const handleOverlayClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (e.target === e.currentTarget) {
-      onClose();
-    }
-  };
-
+export default function Modal({ show, children, onClose }: ModalProps) {
   return (
-    <>
-      {isOpen && (
-        <div
-          className="fixed  top-0 left-0 w-full h-full flex justify-center items-center bg-black bg-opacity-80 z-50"
-          onClick={handleOverlayClick}
+    <Transition.Root as={Fragment} show={show}>
+      <Dialog
+        as="div"
+        className="fixed inset-0 z-50 flex items-center"
+        onClose={onClose}
+      >
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
         >
-          <div className="relative rounded-3xl bg-white p-6  max-w-screen-sm max-h-screen-sm">
-            <button
-              onClick={onClose}
-              className="flex justify-center items-center w-8 h-8 rounded-lg  bg-slate-200 absolute top-4 right-4"
-            >
-              <Close />
-            </button>
-            {children}
-          </div>
-        </div>
-      )}
-    </>
+          <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+        </Transition.Child>
+        <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white shadow-xl transition-all p-7 mx-auto sm:my-10 sm:w-full sm:max-w-2xl">
+          {children}
+        </Dialog.Panel>
+      </Dialog>
+    </Transition.Root>
   );
-};
-
-export default Modal;
+}

@@ -30,7 +30,7 @@ export interface PhaseData {
 export default function Protocol({}: ProtocolProps) {
   const { handleSubmit, reset, control } = useForm();
 
-  const onSubmit = (data) => {
+  const onSubmit = (data: any) => {
     console.log(data);
     postGame(data)
       .then((response) => {

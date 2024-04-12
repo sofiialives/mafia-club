@@ -7,100 +7,100 @@ const daysCards = [
   {
     id: "day1",
     img: "/images/day1.png",
-    day: "Wednesday",
+    day: "Среда",
     desc: "Mafia game in English",
   },
   {
     id: "day2",
     img: "/images/day2.png",
-    day: "Friday",
-    desc: "Mafia game in Russian",
+    day: "Пятница",
+    desc: "Мафия на русском",
   },
   {
     id: "day3",
     img: "/images/day3.png",
-    day: "Sunday",
-    desc: "Mafia game in Russian",
+    day: "Суббота",
+    desc: "Мафия на русском",
   },
 ];
 
 export default function Home() {
   return (
     <>
-      <section>
+      <section className="flex justify-center ">
         <HomeSlider />
       </section>
       <MaxWidthWrapper>
         <section className="flex flex-row flex-wrap justify-center gap-[40px] mt-7 pb-[68px] ">
-          <h1 className="flex gap-4 items-center text-[32px] text-[#FDD901]">
-            About club <Logo className=" w-12 h-12 " />
+          <h1
+            className="flex gap-4 items-center text-[32px] text-[#FDD901]"
+            id="about"
+          >
+            О Клубе <Logo className=" w-12 h-12 " />
           </h1>
           <div className="flex flex-column flex-wrap gap-8">
             <p className="leading-7  text-[22px]">
-              In the world of offline entertainment, Budapest is known for its
-              cozy cafes, wine bars, and unique atmosphere that captures the
-              attention of both locals and tourists. Among the narrow streets,
-              tangled alleyways, and historical buildings, there is one place
-              that has become a true cult center for fans of one specific game -
-              Mafia. This is Club{"  "}
+              В мире офлайн-развлечений Будапешт известен своими уютными кафе,
+              винными барами и неповторимой атмосферой, передающеей внимание как
+              местных жителей, так и туристов. Среди узких улочек, запутанные
+              переулки и исторические здания, есть одно место ставший настоящим
+              культовым центром для фанатов одной конкретной игры - Мафия. Это
+              Клуб{"  "}
               <span className="mx-2">
                 <Logo className=" inline-block w-7 h-7" />
               </span>
             </p>
             <p className="leading-7 text-[22px]">
-              Club
+              Клуб
               <span className="mx-2">
                 <Logo className="inline-block w-7 h7" />
               </span>
-              began its history as a simple meeting place for friends who wanted
-              to play a game of Mafia after work or on weekends. Located in the
-              historic district of the city, the club was small but cozy, with
-              an atmosphere reminiscent of an old European tavern.
+              начал свою историю как простое место встречи друзей, которые
+              хотели поиграть в Мафию после работы или на выходных. Расположен в
+              историческом районе города, клуб был небольшой, но уютный.
             </p>
             <p className="leading-7 text-[22px]">
-              Over time, the popularity of Club
+              Со временем популярность Клуба
               <span className="mx-2">
                 <Logo className="inline-block w-7 h7" />
               </span>
-              began to grow rapidly. People came from all corners of Budapest to
-              be a part of this unique atmosphere and play a couple of rounds of
-              Mafia. After several months of continuous growth, the club gained
-              regular visitors who became a kind of "family" for this cozy
-              establishment.
+              начала быстро расти. Люди приежали со всех уголков Будапешта,
+              чтобы стать частью этой уникальной атмосферы и сыграйте пару игр в
+              Мафию. После нескольких месяцев непрерывного роста клуб приобрел
+              постоянных игроков, ставших своеобразной «семьей» для этого
+              уютного комьюнити.
             </p>
-            <p id="about" className="leading-7 text-[22px]">
-              Club
+            <p className="leading-7 text-[22px]">
+              Клуб
               <span className="mx-2">
                 <Logo className=" inline-block w-7 h7" />
               </span>
-              didn't just offer a game of Mafia - it created real stories.
-              Friendships were formed here, deals were made, intrigues
-              developed. People kept coming back here again and again because
-              they felt that here they were real, that here they could be
-              themselves.
+              не просто предлагал игру «Мафия» — он создавал реальные истории.
+              Здесь завязывались дружеские отношения,л юди возвращаються сюда
+              снова и снова, потому что они чувствовуют, что здесь они
+              настоящие, что здесь они могут быть сами себя.
             </p>
             <p className="leading-7 text-[22px]">
-              Over time, Club
+              Со временем, Клуб
               <span className="mx-2">
                 <Logo className="inline-block w-7 h7" />
               </span>
-              became not only a place to play Mafia, but also a venue for
-              various events. From themed parties to Mafia tournaments open to
-              all comers. People came here to immerse themselves in the unique
-              atmosphere of the club, meet friends, and relax after a hard day's
-              work.
+              стал не только местом для игры в Мафию, но и местом проведения
+              различные мероприятия. От тематических вечеринок до турниров по
+              мафии, открытых для все желающие. Сюда приезжают, чтобы окунуться
+              в интригующую интелектуальную игру, встретиться с друзьями и
+              отдохнуть после тяжелого дня работа.
             </p>
             <p className="leading-7 text-[22px]">
-              Today, Club
+              Сегодня, Клуб
               <span className="mx-2">
                 <Logo className="inline-block w-7 h7" />
               </span>
-              continues to delight its visitors with its coziness, atmosphere,
-              and the opportunity to immerse themselves in the captivating world
-              of the Mafia. For many, this is not just a gaming establishment,
-              but a real corner where they can forget themselves for a few hours
-              and immerse themselves in the atmosphere of unpredictable
-              intrigues and exciting stories.
+              продолжает радовать своих посетителей своим уютом, атмосферой, и
+              возможностью погрузиться в увлекательный мир мафии. Для многих это
+              не просто игра, а комьюнити, где можно забыться на несколько часов
+              и погрузитесь в атмосферу непредсказуемих интриг и захватывающихъ
+              историй.
             </p>
           </div>
         </section>
@@ -108,7 +108,7 @@ export default function Home() {
       <section className="bg-[#202020] border-t-2 border-b-2 border-gradient">
         <MaxWidthWrapper className="flex flex-wrap  gap-[48px]  pt-[44px] pb-[68px] justify-center">
           <h2 className="text-[32px]  text-[#FDD901] font-normal leading-10">
-            Game schedule
+            График игр
           </h2>
           <ul className="flex gap-10 ">
             {daysCards.map((card) => (

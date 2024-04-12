@@ -40,6 +40,7 @@ const buttonVariants = cva(
         radio: "w-5 h-5 bg-white",
         timer: "w-[72px] h-[72px]",
         btnTimer: "py-2 px-4 w-[186px] h-8",
+        btnAuth: "mr-12 text-[#FDD901] font-light text-sm",
       },
       size: {
         sm: "text-sm font-normal",

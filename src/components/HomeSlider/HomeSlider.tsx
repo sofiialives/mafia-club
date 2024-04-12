@@ -10,6 +10,8 @@ import Img_4 from "../../../public/images/img_4.jpg";
 import Img_5 from "../../../public/images/img_5.jpg";
 import Img_6 from "../../../public/images/img_6.jpg";
 
+
+
 type Props = {};
 
 const images = [
@@ -34,16 +36,18 @@ const HomeSlider = (props: Props) => {
   };
 
   return (
-    <Slider {...settings}>
-      {images.map((image) => (
-        <Image
-          key={image.id}
-          src={image.img}
-          alt="Group foto"
-          className="w-[1400px] h-[844px] object-contain"
-        />
-      ))}
-    </Slider>
+    <div className="w-[1400px] max-h-[115vh]">
+      <Slider {...settings}>
+        {images.map((image) => (
+          <Image
+            key={image.id}
+            src={image.img}
+            alt="Group foto"
+            className=" object-cover "
+          />
+        ))}
+      </Slider>
+    </div>
   );
 };
 

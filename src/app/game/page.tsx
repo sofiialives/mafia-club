@@ -6,6 +6,7 @@ import Timer from "@/components/Game/Timer/Timer";
 import Tournament from "@/components/Game/Tournament/Tournament";
 import WinnerTable from "@/components/Game/Winner/WinnerTable";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { postGame } from "@/lib/routes/games";
 import { Controller, useForm } from "react-hook-form";
 
 interface ProtocolProps {}
@@ -31,6 +32,14 @@ export default function Protocol({}: ProtocolProps) {
 
   const onSubmit = (data) => {
     console.log(data);
+    postGame(data)
+      .then((response) => {
+        console.log("Game created successfully", response);
+      })
+      .catch((error) => {
+        console.error("Failed to create game", error);
+      });
+
     reset();
   };
 

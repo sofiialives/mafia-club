@@ -4,12 +4,14 @@ import cn from "@/utils/cn";
 import React from "react";
 import { Control, FieldValues } from "react-hook-form";
 import styles from "../../Table/input.module.css";
+import { GameProps } from "@/app/find/page";
 
 interface WinnerTableProps {
-  control: Control<FieldValues, any>;
+  control?: Control<FieldValues, any>;
+  game?: GameProps | undefined;
 }
 
-export default function WinnerTable({ control }: WinnerTableProps) {
+export default function WinnerTable({ control, game }: WinnerTableProps) {
   const bestMoves = Array.from({ length: 3 }, (_, index) => index + 1);
   return (
     <table className="w-full bg-white text-black">
@@ -20,6 +22,7 @@ export default function WinnerTable({ control }: WinnerTableProps) {
             <InputController
               name="winnerTeam"
               type="text"
+              game={game?.winnerTeam}
               control={control}
               placeholder="Команда"
               defaultValue=""
@@ -39,6 +42,9 @@ export default function WinnerTable({ control }: WinnerTableProps) {
                   <InputController
                     key={index}
                     name={`bestMove[${move}]`}
+                    game={
+                      Array.isArray(game?.bestMove) ? game.bestMove[move] : null
+                    }
                     control={control}
                     type="number"
                     defaultValue={null}
@@ -55,6 +61,7 @@ export default function WinnerTable({ control }: WinnerTableProps) {
               <InputController
                 name="firstKilled"
                 control={control}
+                game={game?.firstKilled}
                 type="number"
                 defaultValue={null}
                 className={cn(
@@ -70,6 +77,7 @@ export default function WinnerTable({ control }: WinnerTableProps) {
             Протест
             <InputController
               name="protest"
+              game={game?.protest}
               control={control}
               placeholder="Протест"
               defaultValue=""
@@ -86,6 +94,7 @@ export default function WinnerTable({ control }: WinnerTableProps) {
             Судья
             <InputController
               name="judge"
+              game={game?.judge}
               control={control}
               placeholder="Судья"
               defaultValue=""

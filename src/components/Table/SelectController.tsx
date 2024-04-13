@@ -5,10 +5,11 @@ import styles from "./input.module.css";
 
 interface SelectControllerProps {
   name: string;
-  control: Control<FieldValues, any>;
-  defaultValue: string;
+  control?: Control<FieldValues, any>;
+  defaultValue: "Мирный" | "Мафия" | "Шериф" | "Дон";
   className?: string;
   options: { label: string; value: string }[];
+  game?: "Мирный" | "Мафия" | "Шериф" | "Дон" | false;
 }
 
 export default function SelectController({
@@ -17,12 +18,13 @@ export default function SelectController({
   defaultValue,
   options,
   className,
+  game,
 }: SelectControllerProps) {
   return (
     <Controller
       name={name}
       control={control}
-      defaultValue={defaultValue}
+      defaultValue={game ? game : defaultValue}
       render={({ field }) => (
         <select
           {...field}

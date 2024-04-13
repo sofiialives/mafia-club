@@ -5,12 +5,14 @@ import cn from "@/utils/cn";
 import React from "react";
 import { Control, FieldValues } from "react-hook-form";
 import styles from "../../Table/input.module.css";
+import { GameProps } from "@/app/find/page";
 
 interface TournamentProps {
-  control: Control<FieldValues, any>;
+  control?: Control<FieldValues, any>;
+  game?: GameProps;
 }
 
-export default function Tournament({ control }: TournamentProps) {
+export default function Tournament({ control, game }: TournamentProps) {
   return (
     <table className="bg-white text-black w-full text-center">
       <tbody>
@@ -41,6 +43,7 @@ export default function Tournament({ control }: TournamentProps) {
             <InputController
               name="date"
               control={control}
+              game={game?.date}
               defaultValue=""
               type="date"
             />
@@ -50,6 +53,7 @@ export default function Tournament({ control }: TournamentProps) {
             <InputController
               name="tableNum"
               control={control}
+              game={game?.tableNum}
               defaultValue={null}
               type="number"
               className={cn(
@@ -63,6 +67,7 @@ export default function Tournament({ control }: TournamentProps) {
             <InputController
               name="gameNum"
               control={control}
+              game={game?.gameNum}
               defaultValue={null}
               type="number"
               className={cn(

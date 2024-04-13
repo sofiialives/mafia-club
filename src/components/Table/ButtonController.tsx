@@ -6,11 +6,12 @@ import styles from "./input.module.css";
 
 interface ButtonControllerProps {
   name: string;
-  control: Control<FieldValues>;
+  control?: Control<FieldValues>;
   type?: "button" | "reset" | "submit";
   variant?: "radio" | "primary" | "secondary" | "protocol";
   className?: string;
   foul?: boolean;
+  game?: string | number | boolean | undefined;
 }
 
 export default function ButtonController({
@@ -20,12 +21,13 @@ export default function ButtonController({
   variant = "primary",
   className,
   foul,
+  game,
 }: ButtonControllerProps) {
   return (
     <Controller
       name={name}
       control={control}
-      defaultValue={false}
+      defaultValue={game ? game : false}
       render={({ field: { onChange, value } }) => (
         <Button
           type={type}

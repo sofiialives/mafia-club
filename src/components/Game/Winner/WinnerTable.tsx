@@ -43,7 +43,7 @@ export default function WinnerTable({ control, game }: WinnerTableProps) {
                     key={index}
                     name={`bestMove[${move}]`}
                     game={
-                      Array.isArray(game?.bestMove) ? game.bestMove[move] : null
+                      Array.isArray(game?.bestMove) ? game.bestMove[move] : ""
                     }
                     control={control}
                     type="number"

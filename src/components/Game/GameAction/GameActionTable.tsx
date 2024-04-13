@@ -21,12 +21,18 @@ export default function GameActionTable({
     <table className="w-full font-medium text-sm">
       <thead>
         <tr>
-          <th colSpan={11} className="bg-white border border-[#CECECE] p-2">
+          <th
+            colSpan={11}
+            className="bg-white border border-[#CECECE] p-2 text-black font-medium text-base"
+          >
             Игровые дейстия
           </th>
         </tr>
         <tr>
-          <th colSpan={11} className="bg-[#FDD901] border border-[#CECECE] p-2">
+          <th
+            colSpan={11}
+            className="bg-[#FDD901] border border-[#CECECE] p-2 text-black font-medium text-base"
+          >
             Голосование {id + 1}
           </th>
         </tr>

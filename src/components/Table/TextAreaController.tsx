@@ -8,7 +8,7 @@ interface TextareaControllerProps {
   defaultValue?: string;
   className?: string;
   placeholder?: string;
-  game?: string | null;
+  game?: string | number | readonly string[] | undefined;
 }
 
 export default function TextAreaController({
@@ -23,11 +23,15 @@ export default function TextAreaController({
     <Controller
       name={name}
       control={control}
-      defaultValue={game ? game : defaultValue}
+      defaultValue={defaultValue}
       render={({ field }) => (
         <textarea
           {...field}
-          className={cn("h-6 overflow-hidden", className)}
+          value={game && game}
+          className={cn(
+            "h-6 overflow-hidden text-black font-medium text-base",
+            className
+          )}
           placeholder={placeholder}
         />
       )}

@@ -2,7 +2,7 @@
 import ButtonController from "@/components/Table/ButtonController";
 import InputController from "@/components/Table/InputController";
 import cn from "@/utils/cn";
-import React from "react";
+import React, { useEffect } from "react";
 import { Control, FieldValues } from "react-hook-form";
 import styles from "../../Table/input.module.css";
 import { GameProps } from "@/app/find/page";
@@ -13,6 +13,10 @@ interface TournamentProps {
 }
 
 export default function Tournament({ control, game }: TournamentProps) {
+  const date = game?.date
+    ? new Date(game?.date).toISOString().slice(0, 10)
+    : "";
+
   return (
     <table className="bg-white text-black w-full text-center">
       <tbody>
@@ -24,6 +28,7 @@ export default function Tournament({ control, game }: TournamentProps) {
             Турнир
             <ButtonController
               name="isTournament"
+              game={game?.isTournament}
               control={control}
               type="button"
               variant="radio"
@@ -43,7 +48,7 @@ export default function Tournament({ control, game }: TournamentProps) {
             <InputController
               name="date"
               control={control}
-              game={game?.date}
+              game={date}
               defaultValue=""
               type="date"
             />

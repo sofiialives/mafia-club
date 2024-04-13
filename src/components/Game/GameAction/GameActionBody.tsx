@@ -37,7 +37,7 @@ export default function GameActionBody({
               type="number"
               min={0}
               max={10}
-              className="text-center w-full"
+              className="text-center w-full text-black"
             />
           </td>
         ))}
@@ -59,7 +59,7 @@ export default function GameActionBody({
               type="number"
               min={0}
               max={10}
-              className="text-center w-full"
+              className="text-center w-full text-black"
             />
           </td>
         ))}
@@ -81,7 +81,7 @@ export default function GameActionBody({
               type="number"
               min={0}
               max={10}
-              className="text-center w-full"
+              className="text-center w-full text-black"
             />
           </td>
         ))}

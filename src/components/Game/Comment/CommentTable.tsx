@@ -29,7 +29,7 @@ export default function CommentTable({ control, game }: CommentTableProps) {
                 game={
                   Array.isArray(game?.comments)
                     ? game.comments[commentName]
-                    : null
+                    : ""
                 }
                 control={control}
                 placeholder="Введите комментарий..."

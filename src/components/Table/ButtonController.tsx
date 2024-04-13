@@ -11,7 +11,7 @@ interface ButtonControllerProps {
   variant?: "radio" | "primary" | "secondary" | "protocol";
   className?: string;
   foul?: boolean;
-  game?: string | number | boolean | undefined;
+  game?: boolean;
 }
 
 export default function ButtonController({
@@ -27,7 +27,7 @@ export default function ButtonController({
     <Controller
       name={name}
       control={control}
-      defaultValue={game ? game : false}
+      defaultValue={false}
       render={({ field: { onChange, value } }) => (
         <Button
           type={type}
@@ -37,6 +37,8 @@ export default function ButtonController({
             styles.shadow,
             value && "bg-[#FDD901]",
             foul && value && "bg-black",
+            game && "bg-[#FDD901]",
+            foul && game && "bg-black",
             className
           )}
         />

@@ -9,7 +9,7 @@ interface SelectControllerProps {
   defaultValue: "Мирный" | "Мафия" | "Шериф" | "Дон";
   className?: string;
   options: { label: string; value: string }[];
-  game?: "Мирный" | "Мафия" | "Шериф" | "Дон" | false;
+  game?: string | number | readonly string[] | undefined;
 }
 
 export default function SelectController({
@@ -24,10 +24,11 @@ export default function SelectController({
     <Controller
       name={name}
       control={control}
-      defaultValue={game ? game : defaultValue}
+      defaultValue={defaultValue}
       render={({ field }) => (
         <select
           {...field}
+          value={game && game}
           className={cn(
             "bg-[#FDD901] border border-black shadow-inner rounded-full text-center",
             styles.select,

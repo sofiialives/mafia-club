@@ -2,7 +2,6 @@ import React, { HTMLInputTypeAttribute } from "react";
 import { Control, Controller, FieldValues } from "react-hook-form";
 import styles from "./input.module.css";
 import cn from "@/utils/cn";
-import { GameProps } from "@/app/find/page";
 
 interface InputControllerProps {
   name: string;
@@ -13,7 +12,7 @@ interface InputControllerProps {
   max?: number;
   className?: string;
   placeholder?: string;
-  game?: Date | number | string | boolean | undefined | null;
+  game?: string | number | readonly string[] | undefined;
 }
 
 export default function InputController({
@@ -32,10 +31,11 @@ export default function InputController({
       <Controller
         name={name}
         control={control}
-        defaultValue={game ? defaultValue : game}
+        defaultValue={defaultValue}
         render={({ field }) => (
           <input
             {...field}
+            value={game && game}
             step=".1"
             type={type}
             min={min}

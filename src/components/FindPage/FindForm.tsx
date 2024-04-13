@@ -4,23 +4,15 @@ import styles from "@/components/Table/input.module.css";
 import cn from "@/utils/cn";
 import Button from "../Button";
 import { useForm } from "react-hook-form";
-import { getGame } from "@/lib/routes/games";
+import { FormProps } from "@/app/find/page";
 
-interface FindFormProps {}
-
-interface FormProps {
-  date: Date;
-  tableNum: number;
-  gameNum: number;
+interface FindFormProps {
+  onSubmit: (data: FormProps) => Promise<void>;
 }
 
-export default function FindForm({}: FindFormProps) {
+export default function FindForm({ onSubmit }: FindFormProps) {
   const { register, handleSubmit } = useForm<FormProps>();
 
-  const onSubmit = (data: FormProps) => {
-    getGame(data);
-    console.log(data);
-  };
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}

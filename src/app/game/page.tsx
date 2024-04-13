@@ -11,16 +11,6 @@ import { useForm } from "react-hook-form";
 
 interface ProtocolProps {}
 
-export interface GamePlayerProps {
-  tournament: boolean;
-  nickname: string;
-  role: "Мирный" | "Мафия" | "Шериф" | "Дон";
-  fouls: number;
-  points: number;
-  addPoints: number;
-  phase: { player: number; vote: number; revote: number }[];
-}
-
 export interface PhaseData {
   player: number;
   vote: number;

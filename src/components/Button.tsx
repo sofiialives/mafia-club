@@ -41,6 +41,7 @@ const buttonVariants = cva(
         timer: "w-[72px] h-[72px]",
         btnTimer: "py-2 px-4 w-[186px] h-8",
         btnAuth: "mr-12 text-[#FDD901] font-light text-sm",
+        find: "bg-[#414141] py-2 px-12 text-[#FDD901]",
       },
       size: {
         sm: "text-sm font-normal",

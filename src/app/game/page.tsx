@@ -7,7 +7,7 @@ import Tournament from "@/components/Game/Tournament/Tournament";
 import WinnerTable from "@/components/Game/Winner/WinnerTable";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { postGame } from "@/lib/routes/games";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 
 interface ProtocolProps {}
 

@@ -2,6 +2,7 @@ import FindForm from "@/components/FindPage/FindForm";
 import FoundedGame from "@/components/FindPage/FoundedGame";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import React from "react";
+import { useForm } from "react-hook-form";
 
 type Props = {};
 

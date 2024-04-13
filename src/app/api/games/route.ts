@@ -1,6 +1,6 @@
 import { dbConnect } from "@/lib/db/connect";
 import { Game } from "@/lib/models/games";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   try {
@@ -37,5 +37,20 @@ export async function POST(request: Request) {
   } catch (error) {
     console.log(error);
     throw new Error("Failed to fetch games");
+  }
+}
+
+export async function GET(request: NextRequest) {
+  try {
+    dbConnect();
+    const urlParams = request.nextUrl.searchParams;
+    const date = urlParams.get("date");
+    const tableNum = urlParams.get("tableNum");
+    const gameNum = urlParams.get("gameNum");
+
+    const games = await Game.find({ date, tableNum, gameNum });
+    return NextResponse.json(games);
+  } catch (error) {
+    throw new Error("Failed to fetch the game");
   }
 }

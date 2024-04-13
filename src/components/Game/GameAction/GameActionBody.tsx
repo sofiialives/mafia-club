@@ -1,12 +1,19 @@
 "use client";
+import { PhaseData } from "@/app/game/page";
 import InputController from "@/components/Table/InputController";
 import React from "react";
-import { useForm } from "react-hook-form";
+import { Control, FieldValues } from "react-hook-form";
 
-interface GameActionBodyProps {}
+interface GameActionBodyProps {
+  control: Control<FieldValues, any>;
+  tableIndex: number;
+  phases: PhaseData[];
+}
 
-export default function GameActionBody({}: GameActionBodyProps) {
-  const { control } = useForm();
+export default function GameActionBody({
+  control,
+  tableIndex,
+}: GameActionBodyProps) {
   const numbers = Array.from({ length: 10 }, (_, index) => index + 1);
   return (
     <tbody>
@@ -16,10 +23,18 @@ export default function GameActionBody({}: GameActionBodyProps) {
         </td>
         {numbers.map((number) => (
           <td
+            className="bg-white border border-[#CECECE] w-[36px]"
             key={number}
-            className="bg-white border border-[#CECECE] text-center p-2 w-[36px]"
           >
-            {number}
+            <InputController
+              name={`phases[${tableIndex}][${number - 1}].player`}
+              control={control}
+              defaultValue={0}
+              type="number"
+              min={0}
+              max={10}
+              className="text-center w-full"
+            />
           </td>
         ))}
       </tr>
@@ -33,9 +48,9 @@ export default function GameActionBody({}: GameActionBodyProps) {
             key={number}
           >
             <InputController
-              name={`vote${number}`}
+              name={`phases[${tableIndex}][${number - 1}].vote`}
               control={control}
-              defaultValue="0"
+              defaultValue={0}
               type="number"
               min={0}
               max={10}
@@ -46,7 +61,7 @@ export default function GameActionBody({}: GameActionBodyProps) {
       </tr>
       <tr>
         <td className="text-yellow-400 bg-[#414141] border border-[#CECECE] p-2">
-          Предголосование
+          Переголосование
         </td>
         {numbers.map((number) => (
           <td
@@ -54,9 +69,9 @@ export default function GameActionBody({}: GameActionBodyProps) {
             key={number}
           >
             <InputController
-              name={`prevote${number}`}
+              name={`phases[${tableIndex}][${number - 1}].revote`}
               control={control}
-              defaultValue="0"
+              defaultValue={0}
               type="number"
               min={0}
               max={10}

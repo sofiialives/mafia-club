@@ -1,11 +1,19 @@
 import React from "react";
 import GameActionBody from "./GameActionBody";
+import { Control, FieldValues } from "react-hook-form";
+import { PhaseData } from "@/app/game/page";
 
 interface GameActionTableProps {
   id: number;
+  control: Control<FieldValues, any>;
+  phases: PhaseData[][];
 }
 
-export default function GameActionTable({ id }: GameActionTableProps) {
+export default function GameActionTable({
+  id,
+  control,
+  phases,
+}: GameActionTableProps) {
   return (
     <table className="w-full font-medium text-sm">
       <thead>
@@ -20,7 +28,7 @@ export default function GameActionTable({ id }: GameActionTableProps) {
           </th>
         </tr>
       </thead>
-      <GameActionBody />
+      <GameActionBody control={control} tableIndex={id} phases={phases[id]} />
     </table>
   );
 }

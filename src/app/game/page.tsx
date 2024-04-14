@@ -1,4 +1,5 @@
 "use client";
+import Button from "@/components/Button";
 import CommentTable from "@/components/Game/Comment/CommentTable";
 import GameActionTable from "@/components/Game/GameAction/GameActionTable";
 import GameProtocolTable from "@/components/Game/Protocol/GameProtocolTable";
@@ -7,19 +8,11 @@ import Tournament from "@/components/Game/Tournament/Tournament";
 import WinnerTable from "@/components/Game/Winner/WinnerTable";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { postGame } from "@/lib/routes/games";
-import { Controller, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
+import styles from "@/components/Table/input.module.css";
+import Swal from "sweetalert2";
 
 interface ProtocolProps {}
-
-export interface GamePlayerProps {
-  tournament: boolean;
-  nickname: string;
-  role: "Мирный" | "Мафия" | "Шериф" | "Дон";
-  fouls: number;
-  points: number;
-  addPoints: number;
-  phase: { player: number; vote: number; revote: number }[];
-}
 
 export interface PhaseData {
   player: number;
@@ -30,19 +23,6 @@ export interface PhaseData {
 export default function Protocol({}: ProtocolProps) {
   const { handleSubmit, reset, control } = useForm();
 
-  const onSubmit = (data: any) => {
-    console.log(data);
-    postGame(data)
-      .then((response) => {
-        console.log("Game created successfully", response);
-      })
-      .catch((error) => {
-        console.error("Failed to create game", error);
-      });
-
-    reset();
-  };
-
   const phases: PhaseData[][] = Array.from({ length: 7 }, () =>
     Array.from({ length: 10 }, () => ({
       player: 0,
@@ -51,9 +31,60 @@ export default function Protocol({}: ProtocolProps) {
     }))
   );
 
+  const onSubmit = (data: any) => {
+    if (
+      !data ||
+      Object.values(data).some((val) => val === undefined || val === "")
+    ) {
+      Swal.fire({
+        icon: "error",
+        title: "Упс...",
+        text: "Данные отсутствуют или содержат пустые значения!",
+      });
+      return;
+    }
+    Swal.fire({
+      title: "Хотите ли вы сохранить изменения?",
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: "Сохранять",
+      denyButtonText: "Не сохранять",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        postGame(data)
+          .then(() => {
+            Swal.fire("Сохранено!", "", "success");
+          })
+          .catch(() => {
+            Swal.fire({
+              icon: "error",
+              title: "Упс...",
+              text: "Что-то пошло не так!",
+            });
+          });
+      } else if (result.isDenied) {
+        Swal.fire("Изменения не сохранено!", "", "info");
+      }
+    });
+
+    reset();
+  };
+
+  const handleReset = () => {
+    reset();
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Информация была успешно сброшена!",
+      showConfirmButton: false,
+      timer: 1000,
+      width: 350,
+    });
+  };
+
   return (
     <main>
-      <MaxWidthWrapper>
+      <MaxWidthWrapper className="p-20">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex gap-16 items-center justify-center">
             <div className="flex flex-col gap-5 w-[604px]">
@@ -74,9 +105,19 @@ export default function Protocol({}: ProtocolProps) {
             </div>
           </div>
           <Timer />
-          <button type="submit" className="text-white">
-            Submit
-          </button>
+          <div className="flex justify-center gap-16">
+            <Button
+              variant="secondary"
+              type="reset"
+              className={styles.shadow}
+              onClick={handleReset}
+            >
+              Сбросить игру
+            </Button>
+            <Button variant="secondary" type="submit" className={styles.shadow}>
+              Сохранить игру
+            </Button>
+          </div>
         </form>
       </MaxWidthWrapper>
     </main>

@@ -1,13 +1,15 @@
 "use client";
+import { GameProps } from "@/app/find/page";
 import TextAreaController from "@/components/Table/TextAreaController";
 import React from "react";
 import { Control, FieldValues } from "react-hook-form";
 
 interface CommentTableProps {
-  control: Control<FieldValues, any>;
+  control?: Control<FieldValues, any>;
+  game?: GameProps;
 }
 
-export default function CommentTable({ control }: CommentTableProps) {
+export default function CommentTable({ control, game }: CommentTableProps) {
   const commentNames = Array.from({ length: 5 }, (_, index) => index + 1);
   return (
     <table>
@@ -24,6 +26,11 @@ export default function CommentTable({ control }: CommentTableProps) {
             <td className="border border-[#CECECE] p-2">
               <TextAreaController
                 name={`comments[${commentName}]`}
+                game={
+                  Array.isArray(game?.comments)
+                    ? game.comments[commentName]
+                    : ""
+                }
                 control={control}
                 placeholder="Введите комментарий..."
                 className="w-full"

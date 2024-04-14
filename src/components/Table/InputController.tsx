@@ -5,13 +5,14 @@ import cn from "@/utils/cn";
 
 interface InputControllerProps {
   name: string;
-  control: Control<FieldValues, any>;
+  control?: Control<FieldValues, any>;
   defaultValue?: string | number | null;
   type: HTMLInputTypeAttribute;
   min?: number;
   max?: number;
   className?: string;
   placeholder?: string;
+  game?: string | number | readonly string[] | undefined;
 }
 
 export default function InputController({
@@ -23,6 +24,7 @@ export default function InputController({
   max,
   placeholder,
   className,
+  game,
 }: InputControllerProps) {
   return (
     <div>
@@ -33,6 +35,7 @@ export default function InputController({
         render={({ field }) => (
           <input
             {...field}
+            value={game ? game : field.value}
             step=".1"
             type={type}
             min={min}

@@ -6,11 +6,12 @@ import styles from "./input.module.css";
 
 interface ButtonControllerProps {
   name: string;
-  control: Control<FieldValues>;
+  control?: Control<FieldValues>;
   type?: "button" | "reset" | "submit";
   variant?: "radio" | "primary" | "secondary" | "protocol";
   className?: string;
   foul?: boolean;
+  game?: boolean;
 }
 
 export default function ButtonController({
@@ -20,6 +21,7 @@ export default function ButtonController({
   variant = "primary",
   className,
   foul,
+  game,
 }: ButtonControllerProps) {
   return (
     <Controller
@@ -35,6 +37,8 @@ export default function ButtonController({
             styles.shadow,
             value && "bg-[#FDD901]",
             foul && value && "bg-black",
+            game && "bg-[#FDD901]",
+            foul && game && "bg-black",
             className
           )}
         />

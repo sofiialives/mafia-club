@@ -4,10 +4,11 @@ import { Control, Controller, FieldValues } from "react-hook-form";
 
 interface TextareaControllerProps {
   name: string;
-  control: Control<FieldValues, any>;
+  control?: Control<FieldValues, any>;
   defaultValue?: string;
   className?: string;
   placeholder?: string;
+  game?: string | number | readonly string[] | undefined;
 }
 
 export default function TextAreaController({
@@ -16,6 +17,7 @@ export default function TextAreaController({
   defaultValue = "",
   className = "",
   placeholder = "",
+  game,
 }: TextareaControllerProps) {
   return (
     <Controller
@@ -25,7 +27,11 @@ export default function TextAreaController({
       render={({ field }) => (
         <textarea
           {...field}
-          className={cn("h-6 overflow-hidden", className)}
+          value={game ? game : field.value}
+          className={cn(
+            "h-6 overflow-hidden text-black font-medium text-base",
+            className
+          )}
           placeholder={placeholder}
         />
       )}

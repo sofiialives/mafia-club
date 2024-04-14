@@ -5,12 +5,18 @@ import cn from "@/utils/cn";
 import React from "react";
 import { Control, FieldValues } from "react-hook-form";
 import styles from "../../Table/input.module.css";
+import { GameProps } from "@/app/find/page";
 
 interface TournamentProps {
-  control: Control<FieldValues, any>;
+  control?: Control<FieldValues, any>;
+  game?: GameProps;
 }
 
-export default function Tournament({ control }: TournamentProps) {
+export default function Tournament({ control, game }: TournamentProps) {
+  const date = game?.date
+    ? new Date(game?.date).toISOString().slice(0, 10)
+    : "";
+
   return (
     <table className="bg-white text-black w-full text-center">
       <tbody>
@@ -19,13 +25,16 @@ export default function Tournament({ control }: TournamentProps) {
             className="border border-[#CECECE] border-t-0 py-2 font-medium text-sm"
             colSpan={3}
           >
-            Турнир
-            <ButtonController
-              name="isTournament"
-              control={control}
-              type="button"
-              variant="radio"
-            />
+            <div className="flex items-center justify-center gap-2">
+              Турнир
+              <ButtonController
+                name="isTournament"
+                game={game?.isTournament}
+                control={control}
+                type="button"
+                variant="radio"
+              />
+            </div>
           </td>
         </tr>
         <tr>
@@ -41,6 +50,7 @@ export default function Tournament({ control }: TournamentProps) {
             <InputController
               name="date"
               control={control}
+              game={date}
               defaultValue=""
               type="date"
             />
@@ -50,6 +60,7 @@ export default function Tournament({ control }: TournamentProps) {
             <InputController
               name="tableNum"
               control={control}
+              game={game?.tableNum}
               defaultValue={null}
               type="number"
               className={cn(
@@ -63,6 +74,7 @@ export default function Tournament({ control }: TournamentProps) {
             <InputController
               name="gameNum"
               control={control}
+              game={game?.gameNum}
               defaultValue={null}
               type="number"
               className={cn(

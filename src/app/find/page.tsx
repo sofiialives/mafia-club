@@ -6,6 +6,7 @@ import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { getGame } from "@/lib/routes/games";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
+import Swal from "sweetalert2";
 
 type Props = {};
 
@@ -50,9 +51,30 @@ const FindGame = (props: Props) => {
 
   const onSubmit = async (data: FormProps) => {
     const result = await getGame(data);
+    if (
+      !result ||
+      Object.values(data).some((val) => val === undefined || val === "")
+    ) {
+      Swal.fire({
+        position: "top-end",
+        icon: "error",
+        title: "Данные отсутствуют или такой игры не существует!",
+        showConfirmButton: false,
+        timer: 1000,
+        width: 350,
+      });
+      return;
+    }
     setResults(result);
-    console.log(results);
     reset();
+    Swal.fire({
+      position: "top-end",
+      icon: "success",
+      title: "Игра найдена!",
+      showConfirmButton: false,
+      timer: 1000,
+      width: 350,
+    });
   };
 
   return (

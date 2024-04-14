@@ -31,7 +31,9 @@ export default function GameActionBody({
           >
             <InputController
               name={`phases[${tableIndex}][${number - 1}].player`}
-              game={game?.phases ? game.phases[tableIndex].player : 0}
+              game={
+                game?.phases ? game.phases[tableIndex][number - 1].player : 0
+              }
               control={control}
               defaultValue={0}
               type="number"
@@ -53,7 +55,7 @@ export default function GameActionBody({
           >
             <InputController
               name={`phases[${tableIndex}][${number - 1}].vote`}
-              game={game?.phases ? game.phases[tableIndex].vote : 0}
+              game={game?.phases ? game.phases[tableIndex][number - 1].vote : 0}
               control={control}
               defaultValue={0}
               type="number"
@@ -75,7 +77,9 @@ export default function GameActionBody({
           >
             <InputController
               name={`phases[${tableIndex}][${number - 1}].revote`}
-              game={game?.phases ? game.phases[tableIndex].revote : 0}
+              game={
+                game?.phases ? game.phases[tableIndex][number - 1].revote : 0
+              }
               control={control}
               defaultValue={0}
               type="number"

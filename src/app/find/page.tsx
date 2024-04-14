@@ -35,7 +35,7 @@ export interface GameProps {
   protest?: string;
   winnerTeam?: string;
   judge?: string;
-  phases?: { player: number; vote: number; revote: number }[];
+  phases?: { player: number; vote: number; revote: number }[][];
 }
 
 const FindGame = (props: Props) => {
@@ -56,7 +56,7 @@ const FindGame = (props: Props) => {
   };
 
   return (
-    <MaxWidthWrapper className="flex flex-col items-center">
+    <MaxWidthWrapper className="flex flex-col items-center pt-20">
       <FindForm onSubmit={onSubmit} />
       <FoundedGame game={results} />
       <FindTable game={results} />

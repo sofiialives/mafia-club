@@ -39,7 +39,7 @@ const buttonVariants = cva(
         protocol: "w-12 h-6",
         radio: "w-5 h-5 bg-white",
         timer: "w-[72px] h-[72px]",
-        btnTimer: "py-2 px-4 w-[186px] h-8",
+        btnTimer: "py-1 px-4 w-[186px]",
         btnAuth: "mr-12 text-[#FDD901] font-light text-sm",
         find: "bg-[#414141] py-2 px-12 text-[#FDD901]",
       },

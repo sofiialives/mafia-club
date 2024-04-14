@@ -35,7 +35,7 @@ export default function InputController({
         render={({ field }) => (
           <input
             {...field}
-            value={game && game}
+            value={game ? game : field.value}
             step=".1"
             type={type}
             min={min}

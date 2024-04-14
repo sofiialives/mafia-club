@@ -40,6 +40,9 @@ const gamesSchema = new Schema(
       type: String,
       required: true,
     },
+    phases: {
+      type: Array,
+    },
   },
   { versionKey: false }
 );

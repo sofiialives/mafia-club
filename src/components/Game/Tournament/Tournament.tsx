@@ -2,7 +2,7 @@
 import ButtonController from "@/components/Table/ButtonController";
 import InputController from "@/components/Table/InputController";
 import cn from "@/utils/cn";
-import React, { useEffect } from "react";
+import React from "react";
 import { Control, FieldValues } from "react-hook-form";
 import styles from "../../Table/input.module.css";
 import { GameProps } from "@/app/find/page";
@@ -25,14 +25,16 @@ export default function Tournament({ control, game }: TournamentProps) {
             className="border border-[#CECECE] border-t-0 py-2 font-medium text-sm"
             colSpan={3}
           >
-            Турнир
-            <ButtonController
-              name="isTournament"
-              game={game?.isTournament}
-              control={control}
-              type="button"
-              variant="radio"
-            />
+            <div className="flex items-center justify-center gap-2">
+              Турнир
+              <ButtonController
+                name="isTournament"
+                game={game?.isTournament}
+                control={control}
+                type="button"
+                variant="radio"
+              />
+            </div>
           </td>
         </tr>
         <tr>

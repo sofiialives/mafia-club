@@ -27,7 +27,7 @@ export default function TextAreaController({
       render={({ field }) => (
         <textarea
           {...field}
-          value={game && game}
+          value={game ? game : field.value}
           className={cn(
             "h-6 overflow-hidden text-black font-medium text-base",
             className

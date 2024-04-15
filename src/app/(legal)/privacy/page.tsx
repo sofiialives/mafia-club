@@ -57,11 +57,11 @@ const PrivacyPage = (props: Props) => {
               </p>
             </article>
             <article>
-              <h2> Зв'яжіться з нами</h2>
+              <h2> Зв&apos;яжіться з нами</h2>
               Якщо у вас є питання щодо цієї політики конфіденційності,
-              зв'яжіться з нами:
+              зв&apos;яжіться з нами:
               <br />
-              Через{" "}
+              Через
               <span>
                 <a href="https://discord.gg/vC2jtXVm">TeamForce</a>
               </span>

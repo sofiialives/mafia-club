@@ -12,7 +12,7 @@ interface InputControllerProps {
   max?: number;
   className?: string;
   placeholder?: string;
-  game?: string | number | readonly string[] | undefined;
+  game?: string | number | readonly string[] | null;
 }
 
 export default function InputController({

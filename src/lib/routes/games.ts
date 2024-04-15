@@ -29,7 +29,7 @@ export const getGame = async ({
 }) => {
   try {
     const res = await fetch(
-      `http://localhost:3000/api/games?date=${date}&tableNum=${tableNum}&gameNum=${gameNum}`,
+      `https://mafia-16vh1s0sb-sofiialives-projects.vercel.app/api/games?date=${date}&tableNum=${tableNum}&gameNum=${gameNum}`,
       {
         next: { revalidate: 3600 },
       }

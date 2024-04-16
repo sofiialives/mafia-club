@@ -4,14 +4,16 @@ import InputController from "@/components/Table/InputController";
 import SelectController from "@/components/Table/SelectController";
 import cn from "@/utils/cn";
 import React from "react";
-import { useForm } from "react-hook-form";
+import { Control, FieldValues } from "react-hook-form";
 import styles from "../../Table/input.module.css";
+import { GameProps } from "@/app/find/page";
 
-interface ProtocolBodyProps {}
+interface ProtocolBodyProps {
+  control?: Control<FieldValues, any>;
+  game?: GameProps;
+}
 
-export default function ProtocolBody({}: ProtocolBodyProps) {
-  const { control } = useForm();
-
+export default function ProtocolBody({ control, game }: ProtocolBodyProps) {
   const rows = Array.from({ length: 10 }, (_, index) => index + 1);
   const foulTypes = ["firstFoul", "secondFoul", "thirdFoul"];
   const pointsTypes = [
@@ -27,6 +29,7 @@ export default function ProtocolBody({}: ProtocolBodyProps) {
             <InputController
               name={`players[${rowNumber}].playerName`}
               control={control}
+              game={game?.players[rowNumber].playerName}
               defaultValue=""
               placeholder="Никнейм"
               type="text"
@@ -37,12 +40,13 @@ export default function ProtocolBody({}: ProtocolBodyProps) {
             <SelectController
               name={`players[${rowNumber}].role`}
               control={control}
-              defaultValue=""
+              game={game?.players[rowNumber].role}
+              defaultValue={"Мирный"}
               options={[
-                { label: "Мирний", value: "civilian" },
-                { label: "Мафія", value: "mafia" },
-                { label: "Шериф", value: "sheriff" },
-                { label: "Дон", value: "don" },
+                { label: "Мирный", value: "Мирный" },
+                { label: "Мафия", value: "Мафия" },
+                { label: "Шериф", value: "Шериф" },
+                { label: "Дон", value: "Дон" },
               ]}
             />
           </td>
@@ -50,6 +54,7 @@ export default function ProtocolBody({}: ProtocolBodyProps) {
             <td key={index} className="border border-[#CECECE] p-2">
               <ButtonController
                 name={`players[${rowNumber}].${foulType}`}
+                game={game?.players[rowNumber].firstFoul}
                 control={control}
                 type="button"
                 variant="protocol"
@@ -61,8 +66,9 @@ export default function ProtocolBody({}: ProtocolBodyProps) {
             <td key={point.name} className="border border-[#CECECE] p-2">
               <InputController
                 name={`players[${rowNumber}].${point.name}`}
+                game={game?.players[rowNumber].points}
                 control={control}
-                defaultValue="0"
+                defaultValue={0}
                 type="number"
                 min={0}
                 max={1}

@@ -8,207 +8,232 @@ const TermsPage = (props: Props) => {
     <main>
       <section>
         <MaxWidthWrapper>
-          <div>
-            <h1>Terms of use</h1>
-            <div>
-              <article>
-                <h2>
-                  Welcome to the website of the Internet resource &quot;4,6
-                  Mafia Club Budapest&quot;
+
+          <div className="flex flex-col items-center">
+            <h1 className="text-[32px]  text-[#FDD901] font-normal leading-10 mb-8">
+              Политика использования
+            </h1>
+            <div className="flex flex-col gap-8">
+              <article className="flex flex-col gap-4">
+                <h2 className="text-[26px] font-normal leading-10">
+                  Приветствуем вас на сайте интернет ресурса "4,6 Mafia Клуб"
                 </h2>
                 <p>
-                  Dear Visitor, the administration of the information resource
-                  &quot;4,6 Mafia Club Budapest&quot; thanks you for visiting
-                  our website &quot;4,6 Mafia Club Budapest&quot;!
+                  Дорогой Посетитель, администрация информационного ресурса "4,6
+                  Mafia Club Budapest" благодарит вас за посещение нашего сайта
+                  "4,6 Mafia Club Budapest"
                   <br />
-                  Please read the Rules and Conditions of Use of the &quot;4,6
-                  Mafia Club Budapest&quot; website before you start using the
-                  &quot;4,6 Mafia Club Budapest&quot; website.
+                  Пожалуйста, ознакомтесь с Правилами и условиями использования
+                  сайта "4,6 Mafia Club Budapest" перед тем, как начать
+                  пользоваться сайтом "4,6 Mafia Club Budapest"
                 </p>
               </article>
               <article>
-                <h2>
-                  I. Terms and Conditions for using the website &quot;4,6 Mafia
-                  Club Budapest&quot;
+                <h2 className="text-[26px] font-normal leading-10">
+                  I. Правила и условия использования сайта "4,6 Mafia Club
+                  Budapest"
                 </h2>
                 <p>
-                  1.1. These Terms and Rules for using the &quot;4,6 Mafia Club
-                  Budapest&quot; Site &quot;4,6 Mafia Club Budapest&quot;
-                  (hereinafter referred to as the Site) were developed by the
-                  Administration of the &quot;4,6 Mafia Club Budapest&quot; Site
-                  (hereinafter referred to as the Administration) and determine
-                  the conditions for the use and development of the Site, as
-                  well as the rights and obligations of its Users and
-                  Administration.
+                  1.1. Эти Условия и правила использования ресурса "4,6 Mafia
+                  Club Budapest"( далее Сайт) разработаны админитрацией сайта
+                  (далее Администрация) и устанавливают условия использования
+                  сайта и устанавливают условия использования и развития Сайта,
+                  а также права и обязаности его Пользователей и Администрации.
                   <br />
-                  1.2. These Terms and Rules (hereinafter referred to as the
-                  “Rules”) are a legally binding agreement between the User and
-                  the Administration, the subject of which is the provision by
-                  the Administration to the User of services for using the Site,
-                  which regulate access and use of the site &quot;4,6 Mafia Club
-                  Budapest&quot; , which is provided by &quot;4,6 Mafia Club
-                  Budapest&quot; » on the following terms:
+                  1.2. Эти условия и Правила (далее Правила) есть обязательным
+                  договором между Пользователем и Сайтом. Правила есть
+                  юридическим договором между Пользователем и Администрацией,
+                  предметом которого есть предоставление Администрацией
+                  Пользователю услуг с использования Сайта, которые регулируют
+                  доступ и испльзование Сайта, который надаються Сайтом на
+                  следующих условиях:
                   <br />
-                  1.2.1. The User&apos;s access to and use of this website
-                  &quot;4,6 Mafia Club Budapest&quot; is subject to these Rules.
-                  By accessing the Site and using it, the User accepts, without
-                  restrictions and reservations, the legally binding compliance
-                  with the Rules, which come into force immediately upon the
-                  User’s first visit to the Site &quot;4,6 Mafia Club
-                  Budapest&quot;.
+                  1.2.1. Доступ Пользователя к данному веб-сайту и его
+                  использование подчиняется настоящим Правилам. Получив доступ к
+                  Сайту и используя его Пользователь принимает без ограничений и
+                  оговорки, юридически обязательное соблюдение Правил, которые
+                  вступают в силу сразу после первого посещения Пользователем
+                  сайта «4,6 Mafia Club Будапешт».
                   <br />
-                  If the User does not agree to comply with these Rules, the
-                  User has the right not to visit and/or use the Site anymore.
+                  Если Пользователь не согласен соблюдать настоящие Правила,
+                  Пользователь имеет право больше не посещать и/или не
+                  использовать Сайт.
                   <br />
-                  1.2.2 The administration reserves the right to change and/or
-                  supplement these conditions unilaterally at any time without
-                  any special notice by publishing changes on the website.
+                  1.2.2 Администрация оставляет за собой право изменять и/или
+                  дополнить настоящие условия в одностороннем порядке в любое
+                  время без любого специального уведомления путем публикации
+                  изменений на веб-сайте.
                   <br />
-                  These Rules are an open and publicly available document. The
-                  current version of the Rules is posted on the Internet.
+                  Настоящие Правила являются открытым и общедоступным
+                  документом. действующая версия Правил размещена в сети
+                  Интернет.
                   <br />
-                  The Administration strongly recommends that you regularly
-                  re-read these Rules in order to be aware of all changes made
-                  by the &quot;4,6 Mafia Club Budapest&quot; Administration. If
-                  the User continues to use the &quot;4,6 Mafia Club
-                  Budapest&quot; website after publishing changes in the Rules
-                  section, the latter automatically assumes a legal obligation
-                  to comply with these Rules with all amendments and/or
-                  changes/additions made to them.
+                  Администрация настоятельно рекомендует регулярно перечитывать
+                  настоящие Правила, чтобы быть в курсе всех внесенных изменений
+                  Администрацией «4,6 Mafia Club Будапешт». Если Пользователь
+                  продолжает использовать веб-сайт «4,6 Mafia Club Будапешт»
+                  после публикации изменений в разделе Правила, последние
+                  автоматически принимает на себя юридическое обязательство
+                  соблюдать эти Правила со всеми изменениями и/или
+                  изменениями/дополнениями, внесенными в их.
                   <br />
-                  1.2.3. Ignorance of the rules does not exempt you from the
-                  need to follow them. The posting of any message on the site by
-                  the User automatically means his agreement with these rules
-                  and the need to comply with them.
+                  1.2.3. Незнание правил не освобождает вас от ответственности,
+                  необходимо следовать им. Размещение любого сообщения на сайте
+                  Пользователеем автоматически означает свое согласие с
+                  настоящими правилами и необходимость их соблюдения.
+
+
                 </p>
               </article>
               <article>
-                <h2>II. Copyright and ownership of content</h2>
+                <h2 className="text-[26px] font-normal leading-10">
+                  II. Авторские права и право собственности на контент
+                </h2>
                 <p>
-                  2.1. This Site and all Content of the site, materials
-                  published on the site (hereinafter referred to as the
-                  “Content”) are protected by the legislation of Ukraine, as
-                  well as international legislation on copyright and related
-                  rights.
+
+                  2.1. Данный Сайт и все Содержание сайта, материалы
+                  опубликованные на сайте (далее – «Контент») охраняются
+                  законодательством Украины, а также международным
+                  законодательством об авторском праве и связанных с ним правах.
                   <br />
-                  2.1.1 Intellectual property rights to Content: texts, designs,
-                  logos, graphics, icons, images and other materials on this
-                  Site are the property of &quot;4,6 Mafia Club Budapest&quot;,
-                  or are contained on the Site with the permission of the
-                  respective owner.
+                  2.1.1 Права интеллектуальной собственности на Контент: тексты,
+                  дизайны, логотипы, графика, иконки, изображения и другие
+                  материалы по данному вопросу Сайта является собственностью
+                  «4,6 Mafia Club Будапешт» или содержащиеся на Сайте с
+                  разрешения соответствующего владелеца.
                   <br />
-                  2.1.2. Creating links to the Site is encouraged under the
-                  following conditions:
+                  2.1.2. Создание ссылок на Сайт поощряется в соответствии с
+                  следующие условия:
                   <br />
-                  1) The User will inform the Administration in advance about
-                  each link in writing;
+                  1) Пользователь заранее сообщит Администрации о каждой ссылке
+                  в письменном виде;
                   <br />
-                  2) The link will not contain or imply any indication that
-                  &quot;4,6 Mafia Club Budapest&quot; sponsors and/or endorses
-                  the User&apos;s site <br />
-                  3) The User will immediately remove any links to the Site,
-                  upon the first request of the Administration. <br />
-                  2.2. The use by the User of any Content (copying, publication,
-                  etc.) without the written permission of &quot;4,6 Mafia Club
-                  Budapest&quot; and/or the owner of the Content is strictly
-                  prohibited. &quot;4,6 Mafia Club Budapest&quot; will enforce
-                  its intellectual property rights to the fullest extent
-                  permitted by law, including criminal prosecution.
+                  2) Ссылка не будет содержать или подразумевать какие-либо
+                  указания на то, что «4,6 «Мафия Клуб Будапешт» спонсирует
+                  и/или поддерживает сайт Пользователя.
+                  <br />
+                  3) Пользователь немедленно удалит любые ссылки на Сайт, по
+                  первому требованию Администрации.
+                  <br />
+                  2.2. Использование Пользователем любого Контента (копирование,
+                  публикация, и т.д.) без письменного разрешения Администрации
+                  и/или владелеца Контента строго запрещенный. Администрация
+                  будет обеспечивать соблюдение своих права интеллектуальной
+                  собственности в максимально разрешенной степени по закону,
+                  включая уголовное преследование.
+
                 </p>
               </article>
               <article>
-                <h2>III. Contents and operation of the site</h2>
+                <h2 className="text-[26px] font-normal leading-10">
+                  III. Содержание и работа сайта
+                </h2>
                 <p>
-                  3.1. The Administration makes every reasonable effort to
-                  ensure the accuracy of the information on the Site.
+
+                  3.1. Администрация прилагает все разумные усилия для
+                  обеспечения достоверности информации на Сайте.
                   <br />
-                  3.2. The administration does not provide guarantees regarding
-                  the accuracy of the information, its timeliness, reliability
-                  and safety. <br />
-                  3.3. The content on the Site may contain inaccuracies and
-                  typographical errors.
+                  3.2. Администрация не предоставляет гарантий относительно
+                  достоверность информации, ее своевременность, достоверность и
+                  безопасность.
                   <br />
-                  3.4. The administration reserves the right, without warning,
-                  to change or delete any part of the information posted on the
-                  Site at any time.
+                  3.3. Содержимое Сайта может содержать неточности и опечатки.
                   <br />
-                  3.5. &quot;4,6 Mafia Club Budapest&quot; has the right to
-                  suspend or terminate the operation of this Site at its sole
-                  discretion <br />
-                  3.6. The administration is not responsible for any loss or
-                  damage caused by: <br />
-                  3.6.1 And the use of this site or the inability to use it.
+                  3.4. Администрация оставляет за собой право без
+                  предупреждения, изменять или удалять любую часть информации,
+                  размещенной на Сайте в любое время.
                   <br />
-                  3.6.2. Caused by changes or deletion of information, as well
-                  as stoppage or cessation of operation of the site
+                  3.5. Администрация имеет право приостановить или прекратить
+                  работу данного Сайта по своему усмотрению
                   <br />
-                  3.7. The administration is not responsible for any losses
-                  incurred due to inaccuracies in the schedule. <br />
-                  Note: The Site Administration does not guarantee the accuracy
-                  of the schedule in any cinema, since the administration of
-                  cinemas may change the schedule partially or completely
-                  without notifying the Site Administration. The administration
-                  strongly recommends that, in order to avoid unpleasant
-                  situations, before going to the cinema, you check the current
-                  schedule with the cinema administrators.
+                  3.6. Администрация не несет ответственности за любые потери
+                  или ущерб, причиненный:
+                  <br />
+                  3.6.1 Использованием данного сайта или невозможностью его
+                  использования.
+                  <br />
+                  3.6.2. Вызвано изменением или удалением информации, а также
+                  остановка или прекращение работы сайта
+                  <br />
+                  3.7. Администрация не несет ответственности за любые убытки
+                  возникшие из-за неточностей в графике.
+
                 </p>
               </article>
               <article>
-                <h2>IV. Use of the site</h2>
+                <h2 className="text-[26px] font-normal leading-10">
+                  IV. Использование сайта
+                </h2>
                 <p>
-                  5.1. Any visitor to the &quot;4,6 Mafia Club Budapest&quot;
-                  website can become a user of the Site, who will have the
-                  opportunity to use interactive services and services provided
-                  by the Site that do not require registration.
+
+                  5.1. Любой посетитель сайта «4,6 Mafia Club Будапешт» может
+                  стать пользователем Сайта, который получит возможность
+                  использовать интерактивные сервисы и сервисы, предоставляемые
+                  Сайтом которые не требуют регистрации.
                   <br />
-                  5.2. A user of the Site can register in order to use the full
-                  range of services and interactive services that require
-                  registration, and will be able to:
+                  5.2. Пользователь Сайта может зарегистрироваться, чтобы
+                  пользоваться всеми спектрами услуг и интерактивных услуг,
+                  которые требуют регистрацию и сможете:
                   <br />
-                  5.2.1. Each time you visit our website, the User will log in
-                  under the nickname assigned to the user, without re-entering
-                  the password.
+                  5.2.1. Каждый раз, когда вы посещаете наш сайт, Пользователь
+                  авторизуется под присвоенным пользователю ником, без
+                  повторного входа пароль.
                   <br />
-                  5.2.2. The user will be able to receive replies by e-mail to
-                  messages left on the site, as well as to which he has
-                  subscribed; <br />
-                  5.2.3. The user will be able to rate:
+                  5.2.2. Пользователь сможет получать ответы по электронной
+                  почте на адрес сообщения, оставленные на сайте, а также на
+                  которые он подписался;
                   <br />
-                  1) reviews of films, cinemas, actors, etc.; <br />
-                  2) films, actors, etc.
+                  5.2.3. Пользователь сможет оценить:
                   <br />
-                  4) follow the films that interest you;
+                  1) Посмотреть все записаные игры, при условии использования
+                  даного сайта;
                   <br />
-                  5) participate in competitions;
+                  2) Посмотреть информацию о других участниках
                   <br />
-                  6) receive the site’s newsletter; <br />
-                  7) will be able to obtain the status of editor and, together
-                  with the Administration and editorial staff of the site,
-                  participate in the work of the site: post their reviews,
-                  multimedia files for films, photos of favorite actors, etc.
+                  4) Следить за графиком проведения игр
                   <br />
-                  5.2.4. When posting comments on the Site, the User must comply
-                  with the relevant rules: Do not post messages containing: (1)
-                  Calls for violation of current legislation, statements of a
-                  racist nature, incitement of ethnic hatred, and anything else
-                  that falls under the scope of the Criminal Code of Ukraine;
-                  (2) Deliberately false information; (3) Explicit advertising
-                  content; (4) Rude, obscene expressions and insults in any form
-                  - messages that are rude in tone, containing “attacks” on
-                  individuals; (5) Not relevant to the topic under discussion.
+                  5) Участвовать в соревнованиях;
                   <br />
-                  5.2.5. If you agree with someone else&apos;s review, simply
-                  vote for it by putting “+1” <br />
-                  5.3. The administration reserves the right: (1) to delete
-                  messages that contain only a quote from someone else’s review;
-                  (2) delete and edit messages.
+                  6) сможет получить статус редактора и вместе с Администрацией
+                  и редакцией сайта, участвовать в работе сайта: оставлять свои
+                  отзывы, мультимедийные файлы, фотографии и т. д.
                   <br />
-                  5.4. The Administration does not bear any responsibility for
-                  messages posted by the User on the Site, since all messages
-                  reflect the opinions of their authors. <br />
-                  5.3. The Administration reserves the right, at its unilateral
-                  discretion, to deprive the User of registration if the User
-                  violates these Rules without first notifying the offender.
+                  5.2.4. Размещая комментарии на Сайте, Пользователь обязан
+                  соблюдать соответствующиме правила: Не публикуйте сообщения,
+                  содержащие:
+                  <br />
+                  1) Призывы к нарушению действующего законодательства,
+                  высказывания расистский характер, разжигание межнациональной
+                  розни и что-либо еще что подпадает под действие Уголовного
+                  кодекса Украины;
+                  <br />
+                  2) Заведомо ложная информация;
+                  <br />
+                  3) Явная реклама;
+                  <br />
+                  4) Грубые, нецензурные выражения и оскорбления в любой форме.
+                  - сообщения грубого тона, содержащие «нападки» на физические
+                  лица;
+                  <br />
+                  5) Не имеет отношения к обсуждаемой теме.
+                  <br />
+                  5.2.5. Если вы согласны с чужим отзывом, просто проголосуйте
+                  за это поставив «+1» <br />
+                  5.3. Администрация оставляет за собой право: (
+                  <br />
+                  1) удалять сообщения, содержащие только цитату из чужого
+                  отзыва;
+                  <br />
+                  2) удалять и редактировать сообщения.
+                  <br />
+                  5.4. Администрация не несет никакой ответственности за
+                  сообщения, размещенные Пользователем на Сайте, поскольку все
+                  сообщения отражают мнение их авторов. <br />
+                  5.3. Администрация оставляет за собой право в одностороннем
+                  порядке по своему усмотрению лишить Пользователя регистрации,
+                  если Пользователь нарушает настоящие Правила без
+                  предварительного уведомления нарушителя.
+
                 </p>
               </article>
             </div>

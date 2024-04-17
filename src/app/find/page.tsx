@@ -11,9 +11,9 @@ import Swal from "sweetalert2";
 type Props = {};
 
 export interface FormProps {
-  date: Date;
-  tableNum: number;
-  gameNum: number;
+  date?: Date;
+  tableNum?: number;
+  gameNum?: number;
 }
 
 export interface GameProps {
@@ -47,7 +47,6 @@ const FindGame = (props: Props) => {
   useEffect(() => {
     const fetchGames = async () => {
       const allGames = await getGame({});
-      console.log(allGames);
       setResults(allGames);
     };
     fetchGames();
@@ -55,7 +54,7 @@ const FindGame = (props: Props) => {
 
   const onSubmit = async (data: FormProps) => {
     const result = await getGame(data);
-    if (!result || Object.values(data).some((val) => val === undefined)) {
+    if (!result) {
       Swal.fire({
         position: "top-end",
         icon: "error",
@@ -81,6 +80,7 @@ const FindGame = (props: Props) => {
   return (
     <MaxWidthWrapper className="flex flex-col items-center pt-20">
       <FindForm onSubmit={onSubmit} />
+      {/* <FoundedGame game={results} /> */}
       {results?.length > 0 && (
         <ul>
           {results.map((result, index) => (

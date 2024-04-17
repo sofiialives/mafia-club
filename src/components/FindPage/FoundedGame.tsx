@@ -4,12 +4,12 @@ import React from "react";
 import { GameProps } from "@/app/find/page";
 
 interface FoundedGameProps {
-  game: GameProps | undefined;
+  game: GameProps[];
 }
 
 export default function FoundedGame({ game }: FoundedGameProps) {
-  const date = game?.date
-    ? new Date(game?.date).toISOString().slice(0, 10)
+  const date = game[0]?.date
+    ? new Date(game[0]?.date).toISOString().slice(0, 10)
     : "";
 
   return (
@@ -22,7 +22,7 @@ export default function FoundedGame({ game }: FoundedGameProps) {
         )}
       >
         {game
-          ? `${date}/${game.tableNum}/${game.gameNum}`
+          ? `${date}/${game[0].tableNum}/${game[0].gameNum}`
           : "dd/mm/yyyy / Стол / Номер игры"}
       </div>
     </div>

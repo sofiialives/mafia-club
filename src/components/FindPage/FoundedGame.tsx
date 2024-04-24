@@ -1,15 +1,15 @@
 import cn from "@/utils/cn";
 import styles from "@/components/Table/input.module.css";
 import React from "react";
-import { GameProps } from "@/app/find/page";
+import { FormProps } from "@/app/find/page";
 
 interface FoundedGameProps {
-  game: GameProps | undefined;
+  filter: FormProps;
 }
 
-export default function FoundedGame({ game }: FoundedGameProps) {
-  const date = game?.date
-    ? new Date(game?.date).toISOString().slice(0, 10)
+export default function FoundedGame({ filter }: FoundedGameProps) {
+  const date = filter.date
+    ? new Date(filter.date).toISOString().slice(0, 10)
     : "";
 
   return (
@@ -21,9 +21,9 @@ export default function FoundedGame({ game }: FoundedGameProps) {
           styles.shadow
         )}
       >
-        {game
-          ? `${date}/${game.tableNum}/${game.gameNum}`
-          : "dd/mm/yyyy / Стол / Номер игры"}
+        {`${filter.date ? date : "dd/mm/yyyy"} / ${
+          filter.tableNum ? filter.tableNum : "Стол"
+        } / ${filter.gameNum ? filter.gameNum : "Номер игры"}`}
       </div>
     </div>
   );

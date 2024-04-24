@@ -43,12 +43,21 @@ export async function POST(request: Request) {
 export async function GET(request: NextRequest) {
   try {
     dbConnect();
-    const urlParams = request.nextUrl.searchParams;
-    const date = urlParams.get("date");
-    const tableNum = urlParams.get("tableNum");
-    const gameNum = urlParams.get("gameNum");
+    const searchParams = request.nextUrl.searchParams;
+    const date = searchParams.get("date");
+    const tableNum = searchParams.get("tableNum");
+    const gameNum = searchParams.get("gameNum");
+    const page = 1;
+    const limit = 12;
 
-    const games = await Game.find({ date, tableNum, gameNum });
+    const filter: Record<string, any> = {};
+    if (date) filter.date = date;
+    if (tableNum) filter.tableNum = tableNum;
+    if (gameNum) filter.gameNum = gameNum;
+
+    const skip = (page - 1) * limit;
+
+    const games = await Game.find(filter, null, { skip, limit });
     return NextResponse.json(games);
   } catch (error) {
     throw new Error("Failed to fetch the game");

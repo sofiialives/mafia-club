@@ -22,7 +22,7 @@ export default function FindForm({ onSubmit }: FindFormProps) {
         <h2 className="font-medium text-base text-black">Посмотреть игру:</h2>
         <input
           type="date"
-          {...register("date", { required: true })}
+          {...register("date")}
           className={cn(
             "bg-[#FDD901] rounded-[42px] text-black text-center border border-black py-2 px-10",
             styles.shadow
@@ -31,7 +31,7 @@ export default function FindForm({ onSubmit }: FindFormProps) {
         <h2 className="font-medium text-base text-black">Стол №:</h2>
         <input
           type="number"
-          {...register("tableNum", { required: true })}
+          {...register("tableNum")}
           className={cn(
             "bg-[#FDD901] rounded-[42px] text-black text-center border border-black py-2 w-20",
             styles.shadow,
@@ -41,7 +41,7 @@ export default function FindForm({ onSubmit }: FindFormProps) {
         <h2 className="font-medium text-base text-black">Игра №:</h2>
         <input
           type="number"
-          {...register("gameNum", { required: true })}
+          {...register("gameNum")}
           className={cn(
             "bg-[#FDD901] rounded-[42px] text-black text-center border border-black py-2 w-20",
             styles.shadow,

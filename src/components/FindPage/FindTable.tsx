@@ -22,6 +22,7 @@ export default function FindTable({ game }: FindTableProps) {
       revote: 0,
     }))
   );
+
   return (
     <form className="pt-10">
       <div className="flex gap-16 items-center justify-center">

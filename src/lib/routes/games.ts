@@ -1,15 +1,12 @@
 export const postGame = async (gameData: any) => {
   try {
-    const res = await fetch(
-      `https://mafia-16vh1s0sb-sofiialives-projects.vercel.app/api/games`,
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(gameData),
-      }
-    );
+    const res = await fetch(`http://localhost:3000/api/games`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(gameData),
+    });
 
     if (!res.ok) {
       throw new Error("Something went wrong");
@@ -23,25 +20,47 @@ export const postGame = async (gameData: any) => {
 
 export const getGame = async ({
   date,
-  tableNum,
   gameNum,
+  tableNum,
 }: {
-  date: Date;
-  tableNum: number;
-  gameNum: number;
-}) => {
+  date?: Date;
+  gameNum?: number;
+  tableNum?: number;
+} = {}) => {
   try {
-    const res = await fetch(
-      `https://mafia-16vh1s0sb-sofiialives-projects.vercel.app/api/games?date=${date}&tableNum=${tableNum}&gameNum=${gameNum}`,
-      {
-        next: { revalidate: 3600 },
-      }
-    );
+    let url = "http://localhost:3000/api/games";
+
+    if (date || gameNum || tableNum) {
+      url += `?`;
+      if (date) url += `date=${date}&`;
+      if (gameNum) url += `gameNum=${gameNum}&`;
+      if (tableNum) url += `tableNum=${tableNum}&`;
+    }
+
+    const res = await fetch(url, {
+      next: { revalidate: 3600 },
+    });
+
     if (!res.ok) {
       throw new Error("Something went wrong");
     }
+
     const games = await res.json();
-    return games[0];
+    return games;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const getGameById = async ({ _id }: { _id?: string }) => {
+  try {
+    const res = await fetch(`http://localhost:3000/api/games/${_id}`, {
+      next: { revalidate: 3600 },
+    });
+    if (!res.ok) {
+      throw new Error("Something went wrong");
+    }
+    return await res.json();
   } catch (err) {
     console.log(err);
   }

@@ -80,7 +80,7 @@ const Footer = (props: Props) => {
               Политика конфиденциальности
             </Link>
           </nav>
-          <p>Copyright (c) 2024 TeamForce design All Rights Reserved</p>
+          <p className="mt-4">Copyright (c) 2024 TeamForce design All Rights Reserved</p>
         </div>
       </MaxWidthWrapper>
     </footer>

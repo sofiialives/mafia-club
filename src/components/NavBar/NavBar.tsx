@@ -1,9 +1,7 @@
-"use client"
+"use client";
 import React from "react";
-import NavLinkItem from "./NavLinkItem"
 import { usePathname } from "next/navigation";
-
-
+import NavLinkItem from "./NavLinkItem";
 
 type Props = {};
 const navMenu = [
@@ -11,7 +9,6 @@ const navMenu = [
   { id: "about", href: "/#about", title: "О клубе" },
   { id: "contact", href: "/#contact", title: "Контакты" },
   { id: "find", href: "/find", title: "Найти игру" },
-  { id: "game", href: "/game", title: "Играть" },
 ];
 
 const NavBar = (props: Props) => {

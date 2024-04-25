@@ -1,25 +1,29 @@
+"use server";
 import { dbConnect } from "../db/connect";
 import { User } from "../models/users";
 import { signIn, signOut } from "./auth";
 import bcrypt from "bcrypt";
 
+interface FormDataProps {
+  name?: string;
+  email: string;
+  password: string;
+  repeat_password?: string;
+}
+
 export const handleLogout = async () => {
   await signOut();
 };
 
-export const register = async (
-  previousState: any,
-  formData: Iterable<readonly [PropertyKey, any]>
-) => {
-  const { name, email, password, repeatPassword } =
-    Object.fromEntries(formData);
+export const registerUser = async (formData: FormDataProps) => {
+  const { name, email, password, repeat_password } = formData;
 
-  if (password != repeatPassword) {
+  if (password != repeat_password) {
     return { error: "Passwords do not match" };
   }
 
   try {
-    dbConnect();
+    await dbConnect();
     const user = await User.findOne({ email });
     if (user) return { error: "Email is already in use" };
 
@@ -39,11 +43,8 @@ export const register = async (
   }
 };
 
-export const login = async (
-  previousState: any,
-  formData: Iterable<readonly [PropertyKey, any]>
-) => {
-  const { email, password } = Object.fromEntries(formData);
+export const loginUser = async (formData: FormDataProps) => {
+  const { email, password } = formData;
 
   try {
     dbConnect();

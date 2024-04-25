@@ -42,11 +42,13 @@ const buttonVariants = cva(
         btnTimer: "py-1 px-4 w-[186px]",
         btnAuth: "mr-12 text-[#FDD901] font-light text-sm",
         find: "bg-[#414141] py-2 px-12 text-[#FDD901]",
+        register: "bg-[#333333] text-[#FDD901] py-5 px-16 rounded",
       },
       size: {
         sm: "text-sm font-normal",
         md: "text-base font-bold",
         xl: "text-4xl font-bold",
+        lg: "text-3xl font-medium",
       },
     },
     defaultVariants: {

@@ -25,9 +25,9 @@ const login = async (credentials: { email: string; password: string }) => {
 
 export const {
   handlers: { GET, POST },
-  auth,
   signIn,
   signOut,
+  auth,
 } = NextAuth({
   ...authConfig,
   providers: [
@@ -45,4 +45,5 @@ export const {
   callbacks: {
     ...authConfig.callbacks,
   },
+  secret: "UleyQxeSDF1GWUU8+oA3pxeGFNgIaBZW5c0Kr4ekYRg=",
 });

@@ -1,11 +1,15 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Joi from "joi";
-import { FieldError, useForm } from "react-hook-form";
 import { joiResolver } from "@hookform/resolvers/joi";
 import Link from "next/link";
 import Image from "next/image";
 import Eyes from "@/public/images/eyes.png";
+import styles from "@/components/Table/input.module.css";
+import Button from "../Button";
+import { registerUser } from "@/lib/auth/action";
+import clsx from "clsx";
+import { useForm } from "react-hook-form";
 
 const schema = Joi.object({
   name: Joi.string()
@@ -31,96 +35,67 @@ const schema = Joi.object({
 });
 
 const AuthForm = () => {
-  const [isVisiblePassword, setIsVisiblePassword] = useState(false);
-  const [isVisibleRepeatPassword, setIsVisibleRepeatPassword] = useState(false);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: joiResolver(schema),
   });
 
-  const handlerVisible = () => {
-    setIsVisiblePassword((prev) => !prev);
-  };
-    const handlerRepeatVisible = () => {
-      setIsVisibleRepeatPassword((prev) => !prev);
-    };
-
-  const onSubmit = (data: any) => console.log(data);
-  const onSignIn = async (e: any) => {
-    // const nameButton = e.target.innerText;
-    console.log(e);
-    // if (nameButton === 'Google') {
-
-    // }
+  const onSubmit = (data: any) => {
+    console.log(data);
+    registerUser(data);
+    reset();
   };
 
   return (
-    <div className="flex flex-col   items-center gap-4  ">
-      <h2 className="text-[32px] text-center font-bold mt-4">Регистрация</h2>
-
+    <div className="flex flex-col items-center p-20 gap-8">
+      <h2 className="text-4xl">Регистрация</h2>
       <form
-        className="flex flex-col items-center gap-7"
         onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col gap-7 w-full font-medium text-3xl text-black"
       >
         <input
-          className="w-[600px] h-[60px]  px-4 text-xl text-black bg-[#CECECE;]"
-          placeholder="Ваше имя:"
-          {...register("name")}
+          type="text"
+          {...register("name", { required: true })}
+          placeholder="Имя"
+          className={clsx("bg-[#CECECE] py-3 px-7 rounded", styles.shadow)}
         />
-        <p>{(errors.name as FieldError)?.message}</p>
-
         <input
-          className="w-[600px] h-[60px] px-4 text-xl text-black bg-[#CECECE]"
-          placeholder="Електронная почта:"
-          {...register("email")}
+          type="email"
+          {...register("email", { required: true })}
+          placeholder="mail@mail.com"
+          className={clsx("bg-[#FDD901] py-3 px-7 rounded", styles.shadow)}
         />
-        <p>{(errors.email as FieldError)?.message}</p>
-
-        <div className="relative  w-[600px] h-[60px]">
-          <input
-            className="w-full h-full pl-4 pr-16 text-xl text-black bg-[#CECECE]"
-            placeholder="Пароль:"
-            type={isVisiblePassword ? "string" : "password"}
-            {...register("password")}
-          />
-          <button
-            onClick={handlerVisible}
-            className="absolute top-[18px] right-2"
-          >
-            <Image src={Eyes} alt="глаз" />
-          </button>
-        </div>
-        <p>{(errors.password as FieldError)?.message}</p>
-
-        <div className="relative w-[600px] h-[60px]">
-          <input
-            className="w-full  h-full pl-4 pr-16 text-xl text-black bg-[#CECECE]"
-            placeholder="Повторный пароль:"
-            type={isVisibleRepeatPassword ? "string" : "password"}
-            {...register("repeat_password")}
-          />
-          <button
-            onClick={handlerRepeatVisible}
-            className="absolute top-[18px] right-2"
-          >
-            <Image src={Eyes} alt="глаз" />
-          </button>
-        </div>
-        <p>{(errors.repeat_password as FieldError)?.message}</p>
         <input
-          className="h-[60px] w-[368px]  text-xl text-[#FDD901]  bg-[#202020] cursor-pointer transform duration-500 hover:scale-110 focus:scale-110"
+          type="password"
+          {...register("password", { required: true })}
+          placeholder="Создайте пароль"
+          className={clsx("bg-[#FDD901] py-3 px-7 rounded", styles.shadow)}
+        />
+        <input
+          type="password"
+          {...register("repeat_password", { required: true })}
+          placeholder="Повторите пароль"
+          className={clsx("bg-[#CECECE] py-3 px-7 rounded", styles.shadow)}
+        />
+        <p className="font-light text-sm text-white">
+          Нажимая кнопку “Зарегестрироваться”, вы даете согласие на обработку
+          персональных данных
+        </p>
+        <Button
+          variant="register"
+          size="lg"
+          className={styles.shadow}
           type="submit"
-          value="Зарегистрироваться"
-        />
+        >
+          Зарегестрироваться
+        </Button>
       </form>
-      <Link
-        href="/login"
-        className="text-center text-xl text-[#FDD901] transform duration-500 hover:rounded-sm hover:border-2 hover:border-[#FDD901] focus:rounded-sm focus:border-2 focus:border-[#FDD901]"
-      >
-        Войти
+      <Link href="/login" className="font-medium text-2xl">
+        Есть уже аккаунт? <b className="underline">Войти</b>
       </Link>
     </div>
   );

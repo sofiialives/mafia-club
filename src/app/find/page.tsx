@@ -81,7 +81,7 @@ const FindGame = (props: Props) => {
     });
   };
   return (
-    <MaxWidthWrapper className="flex flex-col items-center pt-20">
+    <MaxWidthWrapper className="flex flex-col items-center py-20">
       <FindForm onSubmit={onSubmit} />
       <FoundedGame filter={filter} />
       {results?.length > 0 && (

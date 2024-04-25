@@ -1,6 +1,6 @@
 export const postGame = async (gameData: any) => {
   try {
-    const res = await fetch(`/api/games`, {
+    const res = await fetch(`http://localhost:3000/api/games`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,7 +28,7 @@ export const getGame = async ({
   tableNum?: number;
 } = {}) => {
   try {
-    let url = "/api/games";
+    let url = "http://localhost:3000/api/games";
 
     if (date || gameNum || tableNum) {
       url += `?`;
@@ -54,7 +54,7 @@ export const getGame = async ({
 
 export const getGameById = async ({ _id }: { _id?: string }) => {
   try {
-    const res = await fetch(`/api/games/${_id}`, {
+    const res = await fetch(`http://localhost:3000/api/games/${_id}`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) {

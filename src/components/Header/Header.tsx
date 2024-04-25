@@ -23,7 +23,11 @@ const Header = async (props: Props) => {
         {session?.user ? (
           <>
             {session.user.isAdmin && (
-              <NavLinkItem title="Играть" href="/game" />
+              <NavLinkItem
+                title="Играть"
+                href="/game"
+                className="text-[#FDD901] text-[28px] font-normal relative hover:shadow-[5px_5px_15px_5px_#FDD901] rounded-lg"
+              />
             )}
             <form action={handleLogout}>
               <Button>Вийти</Button>

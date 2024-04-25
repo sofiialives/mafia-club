@@ -1,48 +1,37 @@
-"use client"
-import React, { useState } from "react";
+import React from "react";
 import Logo from "../Logo/Logo";
 import MaxWidthWrapper from "../MaxWidthWrapper";
 import NavBar from "../NavBar/NavBar";
 import Link from "next/link";
+import { auth } from "@/lib/auth/auth";
+import NavLinkItem from "../NavBar/NavLinkItem";
+import { handleLogout } from "@/lib/auth/action";
 import Button from "../Button";
+import NavAuth from "./NavAuth";
 
 type Props = {};
 
-const Header = (props: Props) => {
-  const [isAuth, setIsAuth] = useState(false)
+const Header = async (props: Props) => {
+  const session = await auth();
   return (
     <header id="start">
-      <MaxWidthWrapper className="flex flex-row justify-between items-center h-[80px] ">
+      <MaxWidthWrapper className="flex flex-row justify-between items-center h-[80px]">
         <Link href="/">
-          <Logo className="ml-16" />
+          <Logo className="" />
         </Link>
-
         <NavBar />
-        <div className="relative">
-          <Button
-            onClick={() => setIsAuth(!isAuth)}
-            variant="btnAuth"
-            className="bg-black hover:shadow-[5px_5px_15px_5px_#FDD901] rounded-lg"
-          >
-            Авторизация
-          </Button>
-          {isAuth && (
-            <div className="absolute left-[-25px] z-10 flex justify-center gap-4 rounded bg-[#FDD901] text-black text-lg font-medium">
-              <Link
-                href="/login"
-                className="text-black  bg-transparent border-none"
-              >
-                Войти
-              </Link>
-              <Link
-                href="/register"
-                className="text-black bg-transparent border-none"
-              >
-                Регистрация
-              </Link>
-            </div>
-          )}
-        </div>
+        {session?.user ? (
+          <>
+            {session.user.isAdmin && (
+              <NavLinkItem title="Играть" href="/game" />
+            )}
+            <form action={handleLogout}>
+              <Button>Вийти</Button>
+            </form>
+          </>
+        ) : (
+          <NavAuth />
+        )}
       </MaxWidthWrapper>
     </header>
   );

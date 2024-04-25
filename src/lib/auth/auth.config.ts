@@ -1,56 +1,37 @@
-import { AuthOptions } from "next-auth";
+import { NextAuthConfig } from "next-auth";
 
-interface JwtProps {
-  id: string;
-  isAdmin: boolean;
-}
-
-interface SessionProps {
-  user: { id: string; isAdmin: boolean };
-}
-
-export const authConfig: AuthOptions = {
+const authConfig: NextAuthConfig = {
   pages: {
-    signIn: "/login",
+    signIn: "/login" || "/register",
   },
-  provides: [],
+  providers: [],
   callbacks: {
-    async jwt({ token, user }: { token: JwtProps; user: JwtProps }) {
+    async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
         token.isAdmin = user.isAdmin;
       }
       return token;
     },
-    async session({
-      session,
-      token,
-    }: {
-      session: SessionProps;
-      token: JwtProps;
-    }) {
+    async session({ session, token }) {
       if (token) {
         session.user.id = token.id;
         session.user.isAdmin = token.isAdmin;
       }
       return session;
     },
-    authorized({
-      auth,
-      request,
-    }: {
-      auth: { user: JwtProps | null };
-      request: { nextUrl: URL };
-    }) {
+    authorized({ auth, request }) {
       const user = auth?.user;
       const isOnAdminPanel = request.nextUrl?.pathname.startsWith("/game");
       const isOnLoginPage = request.nextUrl?.pathname.startsWith("/login");
+      const isOnRegisterPage =
+        request.nextUrl?.pathname.startsWith("/register");
 
       if (isOnAdminPanel && !user?.isAdmin) {
         return false;
       }
 
-      if (isOnLoginPage && user) {
+      if ((isOnLoginPage || isOnRegisterPage) && user) {
         return Response.redirect(new URL("/", request.nextUrl));
       }
 
@@ -58,3 +39,5 @@ export const authConfig: AuthOptions = {
     },
   },
 };
+
+export default authConfig;

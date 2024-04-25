@@ -8,8 +8,8 @@ import Eyes from "@/public/images/eyes.png";
 import styles from "@/components/Table/input.module.css";
 import Button from "../Button";
 import { loginUser, registerUser } from "@/lib/auth/action";
-import clsx from "clsx";
 import { useForm } from "react-hook-form";
+import cn from "@/utils/cn";
 
 const schema = Joi.object({
   name: Joi.string()
@@ -61,13 +61,13 @@ const LoginForm = () => {
           type="email"
           {...register("email", { required: true })}
           placeholder="mail@mail.com"
-          className={clsx("bg-[#FDD901] py-3 px-7 rounded", styles.shadow)}
+          className={cn("bg-[#FDD901] py-3 px-7 rounded", styles.shadow)}
         />
         <input
           type="password"
           {...register("password", { required: true })}
-          placeholder="Создайте пароль"
-          className={clsx("bg-[#FDD901] py-3 px-7 rounded", styles.shadow)}
+          placeholder="Введите пароль"
+          className={cn("bg-[#FDD901] py-3 px-7 rounded", styles.shadow)}
         />
         <Button
           variant="register"

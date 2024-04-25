@@ -1,10 +1,13 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import styles from "@/components/Table/input.module.css";
 import cn from "@/utils/cn";
 import Button from "../Button";
 import { useForm } from "react-hook-form";
 import { FormProps } from "@/app/find/page";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import "./datapicker.styles.css";
 
 interface FindFormProps {
   onSubmit: (data: FormProps) => Promise<void>;
@@ -12,6 +15,11 @@ interface FindFormProps {
 
 export default function FindForm({ onSubmit }: FindFormProps) {
   const { register, handleSubmit } = useForm<FormProps>();
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+  const handleDateChange = (date: Date | null) => {
+    setSelectedDate(date);
+  };
 
   return (
     <form
@@ -20,11 +28,12 @@ export default function FindForm({ onSubmit }: FindFormProps) {
     >
       <div className="flex items-center gap-4">
         <h2 className="font-medium text-base text-black">Посмотреть игру:</h2>
-        <input
-          type="date"
-          {...register("date")}
+        <DatePicker
+          selected={selectedDate}
+          onChange={handleDateChange}
+          dateFormat="dd/MM/yyyy"
           className={cn(
-            "bg-[#FDD901] rounded-[42px] text-black text-center border border-black py-2 px-10",
+            "w-[126px] bg-[#FDD901] rounded-[42px] text-black text-center border border-black py-2 px-4",
             styles.shadow
           )}
         />

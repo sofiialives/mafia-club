@@ -2,10 +2,12 @@
 import ButtonController from "@/components/Table/ButtonController";
 import InputController from "@/components/Table/InputController";
 import cn from "@/utils/cn";
-import React from "react";
+import React, { useState } from "react";
 import { Control, FieldValues } from "react-hook-form";
 import styles from "../../Table/input.module.css";
 import { GameProps } from "@/app/find/page";
+import DatePicker from "react-datepicker";
+import "@/components/FindPage/datapicker.styles.css";
 
 interface TournamentProps {
   control?: Control<FieldValues, any>;
@@ -13,9 +15,13 @@ interface TournamentProps {
 }
 
 export default function Tournament({ control, game }: TournamentProps) {
-  const date = game?.date
-    ? new Date(game?.date).toISOString().slice(0, 10)
-    : "";
+  const date = game?.date ? new Date(game.date).toISOString().slice(0, 10) : "";
+
+  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+
+  const handleDateChange = (date: Date | null) => {
+    setSelectedDate(date);
+  };
 
   return (
     <table className="bg-white text-black w-full text-center">
@@ -47,12 +53,19 @@ export default function Tournament({ control, game }: TournamentProps) {
         </tr>
         <tr>
           <td className="border border-[#CECECE] border-t-0 py-2 font-medium text-sm">
-            <InputController
-              name="date"
-              control={control}
-              game={date}
-              defaultValue=""
-              type="date"
+            <DatePicker
+              selected={selectedDate}
+              onChange={handleDateChange}
+              dateFormat="dd/MM/yyyy"
+              // customInput={
+              //   <InputController
+              //     name="date"
+              //     defaultValue=""
+              //     type="date"
+              //     control={control}
+              //     game={date}
+              //   />
+              // }
             />
           </td>
           <td className="border border-[#CECECE] border-t-0 py-2 font-medium text-sm">

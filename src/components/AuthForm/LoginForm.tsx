@@ -7,7 +7,7 @@ import Image from "next/image";
 import Eyes from "@/public/images/eyes.png";
 import styles from "@/components/Table/input.module.css";
 import Button from "../Button";
-import { registerUser } from "@/lib/auth/action";
+import { loginUser, registerUser } from "@/lib/auth/action";
 import clsx from "clsx";
 import { useForm } from "react-hook-form";
 
@@ -34,7 +34,7 @@ const schema = Joi.object({
   "any.only": "Пароли должны совпадать",
 });
 
-const AuthForm = () => {
+const LoginForm = () => {
   const {
     register,
     handleSubmit,
@@ -46,23 +46,17 @@ const AuthForm = () => {
 
   const onSubmit = (data: any) => {
     console.log(data);
-    registerUser(data);
+    loginUser(data);
     reset();
   };
 
   return (
     <div className="flex flex-col items-center p-20 gap-8">
-      <h2 className="text-4xl">Регистрация</h2>
+      <h2 className="text-4xl">Вход на сайт</h2>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="flex flex-col gap-7 w-full font-medium text-3xl text-black"
       >
-        <input
-          type="text"
-          {...register("name", { required: true })}
-          placeholder="Имя"
-          className={clsx("bg-[#CECECE] py-3 px-7 rounded", styles.shadow)}
-        />
         <input
           type="email"
           {...register("email", { required: true })}
@@ -75,30 +69,20 @@ const AuthForm = () => {
           placeholder="Создайте пароль"
           className={clsx("bg-[#FDD901] py-3 px-7 rounded", styles.shadow)}
         />
-        <input
-          type="password"
-          {...register("repeat_password", { required: true })}
-          placeholder="Повторите пароль"
-          className={clsx("bg-[#CECECE] py-3 px-7 rounded", styles.shadow)}
-        />
-        <p className="font-light text-sm text-white">
-          Нажимая кнопку “Зарегестрироваться”, вы даете согласие на обработку
-          персональных данных
-        </p>
         <Button
           variant="register"
           size="lg"
           className={styles.shadow}
           type="submit"
         >
-          Зарегестрироваться
+          Войти
         </Button>
       </form>
-      <Link href="/login" className="font-medium text-2xl">
-        Есть уже аккаунт? <b className="underline">Войти</b>
+      <Link href="/register" className="font-medium text-2xl">
+        Еще нет аккаунта? <b className="underline">Регистрация</b>
       </Link>
     </div>
   );
 };
 
-export default AuthForm;
+export default LoginForm;

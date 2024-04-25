@@ -1,4 +1,4 @@
-import AuthForm from "@/components/AuthForm/AuthForm";
+import RegisterForm from "@/components/AuthForm/RegisterForm";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import React from "react";
 
@@ -8,7 +8,7 @@ const RegisterPage = (props: Props) => {
   return (
     <MaxWidthWrapper className="flex items-center justify-center bg-[#202020] py-20">
       <div className="h-[790px] w-[700px] bg-black">
-        <AuthForm />
+        <RegisterForm />
       </div>
     </MaxWidthWrapper>
   );

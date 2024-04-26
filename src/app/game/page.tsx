@@ -32,10 +32,7 @@ export default function Protocol({}: ProtocolProps) {
   );
 
   const onSubmit = (data: any) => {
-    if (
-      !data ||
-      Object.values(data).some((val) => val === undefined || val === "")
-    ) {
+    if (!data || Object.values(data).some((val) => val === undefined)) {
       Swal.fire({
         icon: "error",
         title: "Упс...",
@@ -49,6 +46,9 @@ export default function Protocol({}: ProtocolProps) {
       showCancelButton: true,
       confirmButtonText: "Сохранять",
       denyButtonText: "Не сохранять",
+      customClass: {
+        confirmButton: "bg-green-500 hover:bg-green-600",
+      },
     }).then((result) => {
       if (result.isConfirmed) {
         postGame(data)

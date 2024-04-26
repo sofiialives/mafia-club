@@ -3,7 +3,7 @@ import ButtonController from "@/components/Table/ButtonController";
 import InputController from "@/components/Table/InputController";
 import cn from "@/utils/cn";
 import React, { useState } from "react";
-import { Control, FieldValues } from "react-hook-form";
+import { Control, Controller, FieldValues } from "react-hook-form";
 import styles from "../../Table/input.module.css";
 import { GameProps } from "@/app/find/page";
 import DatePicker from "react-datepicker";
@@ -53,19 +53,16 @@ export default function Tournament({ control, game }: TournamentProps) {
         </tr>
         <tr>
           <td className="border border-[#CECECE] border-t-0 py-2 font-medium text-sm">
-            <DatePicker
-              selected={selectedDate}
-              onChange={handleDateChange}
-              dateFormat="dd/MM/yyyy"
-              // customInput={
-              //   <InputController
-              //     name="date"
-              //     defaultValue=""
-              //     type="date"
-              //     control={control}
-              //     game={date}
-              //   />
-              // }
+            <Controller
+              name="date"
+              control={control}
+              render={({ field }) => (
+                <DatePicker
+                  selected={!date ? field.value : date}
+                  onChange={(date) => field.onChange(date)}
+                  dateFormat="dd/MM/yyyy"
+                />
+              )}
             />
           </td>
           <td className="border border-[#CECECE] border-t-0 py-2 font-medium text-sm">

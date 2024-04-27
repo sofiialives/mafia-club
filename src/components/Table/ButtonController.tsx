@@ -11,7 +11,7 @@ interface ButtonControllerProps {
   variant?: "radio" | "primary" | "secondary" | "protocol";
   className?: string;
   foul?: boolean;
-  game?: boolean;
+  game?: string | number | boolean | undefined;
 }
 
 export default function ButtonController({

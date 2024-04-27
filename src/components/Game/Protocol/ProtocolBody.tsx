@@ -1,4 +1,3 @@
-"use client";
 import ButtonController from "@/components/Table/ButtonController";
 import InputController from "@/components/Table/InputController";
 import SelectController from "@/components/Table/SelectController";
@@ -7,6 +6,17 @@ import React from "react";
 import { Control, FieldValues } from "react-hook-form";
 import styles from "../../Table/input.module.css";
 import { GameProps } from "@/app/find/page";
+
+// Додані інтерфейси Player і GameProps
+interface Player {
+  playerName: string;
+  role: "Мирный" | "Мафия" | "Шериф" | "Дон";
+  firstFoul: boolean;
+  secondFoul: boolean;
+  thirdFoul: boolean;
+  points: number;
+  add: number;
+}
 
 interface ProtocolBodyProps {
   control?: Control<FieldValues, any>;
@@ -54,7 +64,7 @@ export default function ProtocolBody({ control, game }: ProtocolBodyProps) {
             <td key={index} className="border border-[#CECECE] p-2">
               <ButtonController
                 name={`players[${rowNumber}].${foulType}`}
-                game={game?.players[rowNumber].firstFoul}
+                game={game?.players[rowNumber][foulType as keyof Player]}
                 control={control}
                 type="button"
                 variant="protocol"

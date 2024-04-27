@@ -1,9 +1,7 @@
 import FindId from "@/components/FindPage/FindId";
-import FindTable from "@/components/FindPage/FindTable";
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 import { getGameById } from "@/lib/routes/games";
 import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
-import { useRouter } from "next/navigation";
 import React from "react";
 
 interface FindPageProps {

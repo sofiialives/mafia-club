@@ -1,3 +1,4 @@
+
 import React from "react";
 import Logo from "../Logo/Logo";
 import MaxWidthWrapper from "../MaxWidthWrapper";
@@ -9,28 +10,25 @@ import { handleLogout } from "@/lib/auth/action";
 import Button from "../Button";
 import NavAuth from "./NavAuth";
 
+
 type Props = {};
 
 const Header = async (props: Props) => {
+  
   const session = await auth();
   return (
     <header id="start">
-      <MaxWidthWrapper className="flex flex-row justify-between items-center h-[80px]">
+      <MaxWidthWrapper className="flex flex-row justify-between items-center h-[80px]  text-[#FDD901]">
         <Link href="/">
           <Logo className="" />
         </Link>
-        <NavBar />
+        <NavBar session={session} />
         {session?.user ? (
           <>
-            {session.user.isAdmin && (
-              <NavLinkItem
-                title="Играть"
-                href="/game"
-                className="text-[#FDD901] text-[28px] font-normal relative hover:shadow-[5px_5px_15px_5px_#FDD901] rounded-lg"
-              />
-            )}
             <form action={handleLogout}>
-              <Button>Вийти</Button>
+              <Button className="hover:bg-[#FDD901] hover:text-black border-none hover:shadow-[0px_0px_5px_5px_#FDD901]">
+                Вийти
+              </Button>
             </form>
           </>
         ) : (

@@ -10,11 +10,16 @@ type ErrorComponentProps = {
 
 const ErrorComponent = ({ reset }: ErrorComponentProps) => {
   return (
-    <div>
+    <div className="flex flex-col gap-6 justify-center items-center">
       <p>{`Извините, что-то пошло не так.`}</p>
       <Button onClick={() => reset()}>Попробовать еще раз</Button>
       <p>Или</p>
-      <Link href="/">Вернуться на главную</Link>
+      <Link
+        href="/"
+        className="p-2 cursor-pointer text-[#FDD901] hover:rounded-3xl hover:bg-[#FDD901] hover:text-black"
+      >
+        Вернуться на главную
+      </Link>
     </div>
   );
 };

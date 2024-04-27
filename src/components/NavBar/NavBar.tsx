@@ -1,9 +1,12 @@
-"use client";
+"use client"
 import React from "react";
-import { usePathname } from "next/navigation";
 import NavLinkItem from "./NavLinkItem";
+import { usePathname } from "next/navigation";
+import { Session } from "next-auth";
 
-type Props = {};
+type Props = {
+  session: Session | null;
+};
 const navMenu = [
   { id: "main", href: "/", title: "Главная" },
   { id: "about", href: "/#about", title: "О клубе" },
@@ -11,20 +14,28 @@ const navMenu = [
   { id: "find", href: "/find", title: "Найти игру" },
 ];
 
-const NavBar = (props: Props) => {
+const NavBar = ({ session }: Props) => {
   const pathname = usePathname();
   return (
     <nav>
-      <ul className="flex gap-[60px] ">
+      <ul className="flex gap-1">
         {navMenu.map((menu) => (
           <NavLinkItem
-            className="text-[#FDD901] text-[28px] font-normal relative hover:shadow-[5px_5px_15px_5px_#FDD901] rounded-lg"
+            className="w-[180px] text-center px-2 text-[28px] font-normal relative  hover:bg-[#FDD901] hover:text-black rounded-[4px] hover:shadow-[0px_0px_5px_5px_#FDD901]"
             key={menu.id}
             href={menu.href}
             title={menu.title}
             current={pathname === menu.href}
           />
         ))}
+        {session?.user.isAdmin && (
+          <NavLinkItem
+            title="Играть"
+            href="/game"
+            className="w-[180px] text-center px-2 text-[28px] font-normal relative  hover:bg-[#FDD901] hover:text-black rounded-[4px] hover:shadow-[0px_0px_5px_5px_#FDD901]"
+            current={pathname === "/game"}
+          />
+        )}
       </ul>
     </nav>
   );

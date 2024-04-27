@@ -25,7 +25,7 @@ const images = [
 
 const HomeSlider = (props: Props) => {
   const settings = {
-    dots: false,
+    dots: true,
     infinite: true,
     speed: 700,
     slidesToShow: 1,
@@ -36,14 +36,16 @@ const HomeSlider = (props: Props) => {
   };
 
   return (
-    <div className="w-[1400px] max-h-[115vh]">
-      <Slider {...settings}>
+    <div className="max-w-[1400px]">
+      <Slider {...settings} className="flex justify-center items-center">
         {images.map((image) => (
           <Image
             key={image.id}
             src={image.img}
+            width={1400}
+            height={500}
             alt="Group foto"
-            className=" object-cover "
+            className=" object-cover"
           />
         ))}
       </Slider>

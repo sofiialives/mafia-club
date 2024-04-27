@@ -27,7 +27,7 @@ const daysCards = [
 export default function Home() {
   return (
     <>
-      <section className="flex justify-center ">
+      <section className="flex justify-center py-8 bg-[#202020] border-t-2 border-b-2 border-gradient">
         <HomeSlider />
       </section>
       <MaxWidthWrapper>

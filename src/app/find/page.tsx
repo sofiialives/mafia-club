@@ -85,39 +85,44 @@ const FindGame = (props: Props) => {
   };
 
   return (
-    <MaxWidthWrapper className="flex flex-col items-center py-20">
-      <FindForm onSubmit={onSubmit} />
-      <FoundedGame filter={filter} />
-      {results?.length > 0 && (
-        <table className="text-black mt-4 mb-10">
-          {results.map((result, index) => {
-            const date = result.date
-              ? new Date(result.date).toLocaleDateString("en-GB")
-              : "";
-            return (
-              <tbody key={index}>
-                <td
-                  className={cn("mb-4 bg-[#FDD901] rounded-xl", styles.shadow)}
-                >
-                  <Link href={`/find/${result._id}`}>
-                    <th className="bg-[#414141] text-[#FDD901] text-sm py-1 px-[84px] border border-[#ECECED]">
-                      {date}
-                    </th>
-                    <th className="bg-[#FDD901] py-1 px-[84px] border border-[#ECECED]">
-                      Стол: {result.tableNum}
-                    </th>
-                    <th className="bg-[#FDD901] py-1 px-[84px] border border-[#ECECED]">
-                      Игра: {result.gameNum}
-                    </th>
-                  </Link>
-                </td>
-              </tbody>
-            );
-          })}
-        </table>
-      )}
-      <Pagination page={page} setPage={setPage} results={results.length} />
-    </MaxWidthWrapper>
+    <section className="bg-[#202020]">
+      <MaxWidthWrapper className="flex flex-col items-center py-20">
+        <FindForm onSubmit={onSubmit} />
+        <FoundedGame filter={filter} />
+        {results?.length > 0 && (
+          <table className="text-black mt-4 mb-10">
+            {results.map((result, index) => {
+              const date = result.date
+                ? new Date(result.date).toLocaleDateString("en-GB")
+                : "";
+              return (
+                <tbody key={index}>
+                  <td
+                    className={cn(
+                      "mb-4 bg-[#FDD901] rounded-xl",
+                      styles.shadow
+                    )}
+                  >
+                    <Link href={`/find/${result._id}`}>
+                      <th className="bg-[#414141] text-[#FDD901] text-sm py-1 px-[84px] border border-[#ECECED]">
+                        {date}
+                      </th>
+                      <th className="bg-[#FDD901] py-1 px-[84px] border border-[#ECECED]">
+                        Стол: {result.tableNum}
+                      </th>
+                      <th className="bg-[#FDD901] py-1 px-[84px] border border-[#ECECED]">
+                        Игра: {result.gameNum}
+                      </th>
+                    </Link>
+                  </td>
+                </tbody>
+              );
+            })}
+          </table>
+        )}
+        <Pagination page={page} setPage={setPage} results={results.length} />
+      </MaxWidthWrapper>
+    </section>
   );
 };
 

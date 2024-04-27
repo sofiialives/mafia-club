@@ -38,7 +38,6 @@ export const getGame = async ({
       if (gameNum) url += `gameNum=${gameNum}&`;
       if (tableNum) url += `tableNum=${tableNum}&`;
     }
-    console.log(date);
     const res = await fetch(url, {
       next: { revalidate: 3600 },
     });

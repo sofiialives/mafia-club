@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/components/Table/input.module.css";
 import cn from "@/utils/cn";
 import Button from "../Button";
@@ -14,11 +14,12 @@ interface FindFormProps {
 }
 
 export default function FindForm({ onSubmit }: FindFormProps) {
-  const { register, handleSubmit } = useForm<FormProps>();
+  const { register, handleSubmit, setValue } = useForm<FormProps>();
   const [selectedDate, setSelectedDate] = useState<Date | null>(null);
 
   const handleDateChange = (date: Date | null) => {
     setSelectedDate(date);
+    setValue("date", date ? date : undefined);
   };
 
   return (

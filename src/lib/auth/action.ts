@@ -37,6 +37,8 @@ export const registerUser = async (formData: FormDataProps) => {
     });
 
     await newUser.save();
+
+    await signIn("credentials", { email, password });
     return { success: true };
   } catch (error) {
     return { error: "Something went wrong" };

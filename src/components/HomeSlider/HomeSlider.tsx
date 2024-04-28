@@ -25,7 +25,7 @@ const images = [
 
 const HomeSlider = (props: Props) => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 700,
     slidesToShow: 1,

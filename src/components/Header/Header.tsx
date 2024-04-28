@@ -9,20 +9,38 @@ import NavLinkItem from "../NavBar/NavLinkItem";
 import { handleLogout } from "@/lib/auth/action";
 import Button from "../Button";
 import NavAuth from "./NavAuth";
+import { AdapterUser } from "next-auth/adapters";
+import { AdapterSession } from "next-auth/adapters";
 
 
 type Props = {};
 
+interface ExtendedUser extends AdapterUser {
+  isAdmin: boolean;
+  id: string;
+}
+
+interface ExtendedSession extends AdapterSession {
+  user: ExtendedUser;
+}
+
 const Header = async (props: Props) => {
   
-  const session = await auth();
+  const session: ExtendedSession = await auth();
+  let isAdmin = false;
+  if (session && session.user) {
+    isAdmin = session.user.isAdmin
+  }
+
+ 
+  
   return (
     <header id="start" className=" border-b-2 border-gradient">
       <MaxWidthWrapper className="flex flex-row justify-between items-center h-[80px]  text-[#FDD901]">
         <Link href="/">
           <Logo className="" />
         </Link>
-        <NavBar session={session} />
+        <NavBar isAdmin={isAdmin} />
         {session?.user ? (
           <>
             <form action={handleLogout}>

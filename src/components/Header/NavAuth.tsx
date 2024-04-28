@@ -2,31 +2,27 @@
 import React, { useState } from "react";
 import Button from "../Button";
 import Link from "next/link";
+import HamburgerButton from "../HamburgerButton/HamburgerButton";
 
 interface NavAuthProps {}
 
 export default function NavAuth({}: NavAuthProps) {
-  const [isAuth, setIsAuth] = useState(false);
+  const [isShowMenu, setIsShowMenu] = useState(false);
   return (
     <div className="relative">
-      <Button
-        onClick={() => setIsAuth(!isAuth)}
-        variant="btnAuth"
-        className="bg-black hover:shadow-[5px_5px_15px_5px_#FDD901] rounded-lg"
-      >
-        Авторизация
-      </Button>
-      {isAuth && (
-        <div className="absolute left-[-25px] z-10 flex justify-center gap-4 rounded bg-[#FDD901] text-black text-lg font-medium">
+      <HamburgerButton setIsShowMenu={setIsShowMenu} isShowMenu={isShowMenu} />
+
+      {isShowMenu && (
+        <div className="absolute p-2  left-[-35px] z-10 flex flex-col justify-center gap-4 rounded bg-[#FDD901] text-black text-lg font-medium">
           <Link
             href="/login"
-            className="text-black  bg-transparent border-none"
+            className="text-black  bg-transparent  p-1"
           >
             Войти
           </Link>
           <Link
             href="/register"
-            className="text-black bg-transparent border-none"
+            className="text-black bg-transparent  p-1"
           >
             Регистрация
           </Link>

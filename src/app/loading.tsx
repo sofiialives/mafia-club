@@ -6,7 +6,7 @@ interface Loading {}
 
 export default function Loading({}: Loading) {
   return (
-    <div>
+    <div className="flex justify-center items-center h-screen">
       <Image src={Man} alt="Man in cap smoking" width={400} height={600} />
     </div>
   );

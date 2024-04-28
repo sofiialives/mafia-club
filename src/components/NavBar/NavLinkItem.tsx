@@ -14,11 +14,7 @@ const NavLinkItem = ({ className, href, title, current }: NavLinkItemProp) => {
   return (
     <Link
       href={href}
-      className={cn(
-        current &&
-          "before:absolute before:bottom-[-18px] left-0 before:w-full before:border-[1px] before:border-[#FDD901] before:rounded-sm ",
-        className
-      )}
+      className={cn(current && " bg-[#FDD901] text-black", className)}
       rel="noopener noreferrer"
     >
       {title}

@@ -17,7 +17,7 @@ const Header = async (props: Props) => {
   
   const session = await auth();
   return (
-    <header id="start">
+    <header id="start" className=" border-b-2 border-gradient">
       <MaxWidthWrapper className="flex flex-row justify-between items-center h-[80px]  text-[#FDD901]">
         <Link href="/">
           <Logo className="" />

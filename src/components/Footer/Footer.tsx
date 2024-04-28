@@ -42,7 +42,10 @@ type Props = {};
 
 const Footer = (props: Props) => {
   return (
-    <footer id="contact" className="pt-[60px] pb-[24px]">
+    <footer
+      id="contact"
+      className="pt-[60px] pb-[24px] border-t-2  border-gradient"
+    >
       <MaxWidthWrapper className="flex flex-wrap justify-between">
         <div className="w-[200px] mr-[380px]">
           <div className="flex flex-col gap-7 mb-[50px] text-[16px] leading-[20px] font-normal">
@@ -82,7 +85,7 @@ const Footer = (props: Props) => {
           <Map />
         </div>
         <div className="flex flex-col gap-2 justify-center items-center w-full mt-9">
-          <nav className=" text-[#FDD901] text-[20px] leading-[20px] font-norma">
+          <nav className=" text-[#FDD901] text-[20px] leading-[20px] font-normal">
             <ul className="flex gap-14 justify-center">
               {links.map((link) => (
                 <Link

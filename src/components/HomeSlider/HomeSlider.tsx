@@ -42,7 +42,8 @@ const HomeSlider = (props: Props) => {
           <Image
             key={image.id}
             src={image.img}
-            loading="lazy"
+            priority={true}
+            width={1400}
             alt="Group foto"
             className=" object-cover h-auto w-[1400px]"
           />

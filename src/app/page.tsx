@@ -27,7 +27,7 @@ const daysCards = [
 export default function Home() {
   return (
     <>
-      <section className="flex justify-center py-8 bg-[#202020] border-t-2 border-b-2 border-gradient">
+      <section className="flex justify-center py-8 bg-[#202020]  border-b-2 border-gradient">
         <HomeSlider />
       </section>
       <MaxWidthWrapper>
@@ -105,7 +105,7 @@ export default function Home() {
           </div>
         </section>
       </MaxWidthWrapper>
-      <section className="bg-[#202020] border-t-2 border-b-2 border-gradient">
+      <section className="bg-[#202020] border-t-2  border-gradient">
         <MaxWidthWrapper className="flex flex-wrap  gap-[48px]  pt-[44px] pb-[68px] justify-center">
           <h2 className="text-[32px]  text-[#FDD901] font-normal leading-10">
             График игр

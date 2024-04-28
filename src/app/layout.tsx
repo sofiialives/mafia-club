@@ -4,6 +4,7 @@ import "./globals.css";
 import cn from "@/utils/cn";
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import { Providers } from "./provider";
 
 const font = Montserrat({ subsets: ["latin"] });
 
@@ -25,11 +26,13 @@ export default function RootLayout({
       <body
         className={cn("relative h-full font-sans antialiased", font.className)}
       >
-        <Header />
-        <main className="relative flex flex-col ">
-          <div className="flex-grow flex-1">{children}</div>
-        </main>
-        <Footer />
+        <Providers>
+          <Header />
+          <main className="relative flex flex-col ">
+            <div className="flex-grow flex-1">{children}</div>
+          </main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

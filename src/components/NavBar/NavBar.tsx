@@ -2,10 +2,11 @@
 import React from "react";
 import NavLinkItem from "./NavLinkItem";
 import { usePathname } from "next/navigation";
+import { useUserContext } from "@/context";
 
 
 export interface IsAdminInterface {
- isAdmin: boolean | undefined
+ isAdmin: boolean 
 }
 
 const navMenu = [
@@ -17,6 +18,7 @@ const navMenu = [
 
 const NavBar = ({ isAdmin }: IsAdminInterface) => {
   const pathname = usePathname();
+
 
   return (
     <nav>

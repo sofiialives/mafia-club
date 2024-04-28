@@ -17,12 +17,6 @@ interface TournamentProps {
 export default function Tournament({ control, game }: TournamentProps) {
   const date = game?.date ? new Date(game.date).toISOString().slice(0, 10) : "";
 
-  const [selectedDate, setSelectedDate] = useState<Date | null>(null);
-
-  const handleDateChange = (date: Date | null) => {
-    setSelectedDate(date);
-  };
-
   return (
     <table className="bg-white text-black w-full text-center">
       <tbody>
@@ -61,6 +55,8 @@ export default function Tournament({ control, game }: TournamentProps) {
                   selected={!date ? field.value : date}
                   onChange={(date) => field.onChange(date)}
                   dateFormat="dd/MM/yyyy"
+                  placeholderText="Календар"
+                  className="w-20"
                 />
               )}
             />

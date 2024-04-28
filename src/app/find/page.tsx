@@ -9,6 +9,8 @@ import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import styles from "@/components/Table/input.module.css";
+import Button from "@/components/Button";
+import Pagination from "@/components/FindPage/Pagination";
 
 type Props = {};
 
@@ -46,14 +48,15 @@ const FindGame = (props: Props) => {
   const { reset } = useForm<FormProps>();
   const [results, setResults] = useState<GameProps[]>([]);
   const [filter, setFilter] = useState<FormProps>({});
+  const [page, setPage] = useState(1);
 
   useEffect(() => {
     const fetchGames = async () => {
-      const allGames = await getGame({});
+      const allGames = await getGame({ ...filter, page });
       setResults(allGames);
     };
     fetchGames();
-  }, []);
+  }, [page, filter]);
 
   const onSubmit = async (data: FormProps) => {
     const result = await getGame(data);
@@ -80,47 +83,46 @@ const FindGame = (props: Props) => {
       width: 350,
     });
   };
+
   return (
-    <MaxWidthWrapper className="flex flex-col items-center py-20">
-      <FindForm onSubmit={onSubmit} />
-      <FoundedGame filter={filter} />
-      {results?.length > 0 && (
-        <ul className="text-black mt-4">
-          {results.map((result, index) => {
-            const date = result.date
-              ? new Date(result.date).toISOString().slice(0, 10)
-              : "";
-            return (
-              <li
-                key={index}
-                className={cn(
-                  "mb-4 bg-[#FDD901] rounded-xl border border-black",
-                  styles.shadow
-                )}
-              >
-                <Link href={`/find/${result._id}`} className="flex gap-4 p-3">
-                  {result.date && (
-                    <p className="text-gray-700 text-base font-medium">
-                      <span className="text-black text-lg font-bold">
-                        Дата: </span>
-                      {date}
-                    </p>
-                  )}
-                  <p className="text-gray-700 text-base font-medium">
-                    <span className="text-black text-lg font-bold">Стол: </span>
-                    {result.tableNum}
-                  </p>
-                  <p className="text-gray-700 text-base font-medium">
-                    <span className="text-black text-lg font-bold">Игра: </span>
-                    {result.gameNum}
-                  </p>
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      )}
-    </MaxWidthWrapper>
+    <section className="bg-[#202020]">
+      <MaxWidthWrapper className="flex flex-col items-center py-20">
+        <FindForm onSubmit={onSubmit} />
+        <FoundedGame filter={filter} />
+        {results?.length > 0 && (
+          <table className="text-black mt-4 mb-10">
+            {results.map((result, index) => {
+              const date = result.date
+                ? new Date(result.date).toLocaleDateString("en-GB")
+                : "";
+              return (
+                <tbody key={index}>
+                  <td
+                    className={cn(
+                      "mb-4 bg-[#FDD901] rounded-xl",
+                      styles.shadow
+                    )}
+                  >
+                    <Link href={`/find/${result._id}`}>
+                      <th className="bg-[#414141] text-[#FDD901] text-sm py-1 px-[84px] border border-[#ECECED]">
+                        {date}
+                      </th>
+                      <th className="bg-[#FDD901] py-1 px-[84px] border border-[#ECECED]">
+                        Стол: {result.tableNum}
+                      </th>
+                      <th className="bg-[#FDD901] py-1 px-[84px] border border-[#ECECED]">
+                        Игра: {result.gameNum}
+                      </th>
+                    </Link>
+                  </td>
+                </tbody>
+              );
+            })}
+          </table>
+        )}
+        <Pagination page={page} setPage={setPage} results={results.length} />
+      </MaxWidthWrapper>
+    </section>
   );
 };
 

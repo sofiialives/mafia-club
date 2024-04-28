@@ -53,7 +53,7 @@ export default function Timer({}: TimerProps) {
   }, [playSound, seconds, sound]);
 
   return (
-    <div className="flex gap-[326px] justify-center my-16">
+    <div className="flex flex-col gap-12 justify-center items-center my-16">
       <div className="flex items-center gap-14">
         <Button
           type="button"
@@ -73,7 +73,7 @@ export default function Timer({}: TimerProps) {
           {seconds}
         </Button>
       </div>
-      <div className="flex items-center gap-14">
+      <div className="flex items-center gap-4">
         <Button
           type="button"
           size="sm"

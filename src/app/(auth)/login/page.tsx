@@ -6,11 +6,13 @@ type Props = {};
 
 const LoginPage = (props: Props) => {
   return (
-    <MaxWidthWrapper className="flex items-center justify-center bg-[#202020] py-20">
-      <div className="h-[556px] w-[700px] bg-black">
-        <LoginForm />
-      </div>
-    </MaxWidthWrapper>
+    <section className="bg-[#202020]">
+      <MaxWidthWrapper className="flex items-center justify-center py-20">
+        <div className="h-[556px] w-[700px] bg-black">
+          <LoginForm />
+        </div>
+      </MaxWidthWrapper>
+    </section>
   );
 };
 

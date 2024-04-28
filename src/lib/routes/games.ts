@@ -22,21 +22,22 @@ export const getGame = async ({
   date,
   gameNum,
   tableNum,
+  page,
 }: {
   date?: Date;
   gameNum?: number;
   tableNum?: number;
+  page?: number;
 } = {}) => {
   try {
-    let url = "http://localhost:3000/api/games";
+    let url = `http://localhost:3000/api/games?page=${page}`;
 
     if (date || gameNum || tableNum) {
-      url += `?`;
+      url += `&`;
       if (date) url += `date=${date}&`;
       if (gameNum) url += `gameNum=${gameNum}&`;
       if (tableNum) url += `tableNum=${tableNum}&`;
     }
-
     const res = await fetch(url, {
       next: { revalidate: 3600 },
     });

@@ -84,42 +84,48 @@ export default function Protocol({}: ProtocolProps) {
 
   return (
     <main>
-      <MaxWidthWrapper className="p-20">
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className="flex gap-16 items-center justify-center">
-            <div className="flex flex-col gap-5 w-[604px]">
-              <Tournament control={control} />
-              <GameProtocolTable control={control} />
-              <WinnerTable control={control} />
-              <CommentTable control={control} />
+      <section className="bg-[#202020]">
+        <MaxWidthWrapper className="p-20">
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div className="flex gap-16 justify-center">
+              <div className="flex flex-col gap-5 w-[604px]">
+                <Tournament control={control} />
+                <GameProtocolTable control={control} />
+                <WinnerTable control={control} />
+                <CommentTable control={control} />
+                <Timer />
+              </div>
+              <div className="flex flex-col gap-5 w-[485px]">
+                {phases.map((_, index) => (
+                  <GameActionTable
+                    key={index}
+                    id={index}
+                    control={control}
+                    phases={phases}
+                  />
+                ))}
+              </div>
             </div>
-            <div className="flex flex-col gap-5 w-[485px]">
-              {phases.map((_, index) => (
-                <GameActionTable
-                  key={index}
-                  id={index}
-                  control={control}
-                  phases={phases}
-                />
-              ))}
+            <div className="flex justify-center gap-16 mt-14">
+              <Button
+                variant="secondary"
+                type="reset"
+                className={styles.shadow}
+                onClick={handleReset}
+              >
+                Сбросить игру
+              </Button>
+              <Button
+                variant="secondary"
+                type="submit"
+                className={styles.shadow}
+              >
+                Сохранить игру
+              </Button>
             </div>
-          </div>
-          <Timer />
-          <div className="flex justify-center gap-16">
-            <Button
-              variant="secondary"
-              type="reset"
-              className={styles.shadow}
-              onClick={handleReset}
-            >
-              Сбросить игру
-            </Button>
-            <Button variant="secondary" type="submit" className={styles.shadow}>
-              Сохранить игру
-            </Button>
-          </div>
-        </form>
-      </MaxWidthWrapper>
+          </form>
+        </MaxWidthWrapper>
+      </section>
     </main>
   );
 }

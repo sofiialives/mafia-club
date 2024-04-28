@@ -1,0 +1,21 @@
+.input {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 4px 4px 0px #00000040 inset;
+}
+
+.input:checked {
+  background-color: black;
+}
+
+.input:not(:checked) {
+  background-color: #fdd901;
+}

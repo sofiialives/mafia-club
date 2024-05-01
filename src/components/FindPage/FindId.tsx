@@ -18,7 +18,7 @@ export default function FindId({ game }: FindIdProps) {
         onClick={() => router.back()}
         type="button"
         className={cn("text-lg", styles.shadow)}
-        variant="secondary"
+        variant="backBtn"
       >
         Назад
       </Button>

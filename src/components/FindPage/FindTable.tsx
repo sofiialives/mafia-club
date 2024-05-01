@@ -24,8 +24,8 @@ export default function FindTable({ game }: FindTableProps) {
   );
 
   return (
-    <form className="pt-10">
-      <div className="flex gap-16 items-center justify-center">
+    <form className="py-20">
+      <div className="flex gap-16 justify-center">
         <div className="flex flex-col gap-5 w-[604px]">
           <Tournament game={game} control={control} />
           <GameProtocolTable game={game} control={control} />

@@ -8,9 +8,10 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import styles from "@/components/Table/input.module.css";
-import Button from "@/components/Button";
 import Pagination from "@/components/FindPage/Pagination";
+import Loading from "../loading";
+import styles from "@/components/Table/input.module.css";
+import styless from "./find.module.css";
 
 type Props = {};
 
@@ -60,6 +61,7 @@ const FindGame = (props: Props) => {
 
   const onSubmit = async (data: FormProps) => {
     const result = await getGame(data);
+    console.log(result);
     if (!result) {
       Swal.fire({
         position: "top-end",
@@ -89,36 +91,40 @@ const FindGame = (props: Props) => {
       <MaxWidthWrapper className="flex flex-col items-center py-20">
         <FindForm onSubmit={onSubmit} />
         <FoundedGame filter={filter} />
-        {results?.length > 0 && (
-          <table className="text-black mt-4 mb-10">
+        {results?.length > 0 ? (
+          <ul className="text-black mt-4 mb-10 flex flex-col gap-4 h-[484px]">
             {results.map((result, index) => {
-              const date = result.date
-                ? new Date(result.date).toLocaleDateString("en-GB")
+              const date = result?.date
+                ? new Date(result.date).toLocaleDateString("en-GB", {
+                    timeZone: "Europe/Budapest",
+                  })
                 : "";
+
               return (
-                <tbody key={index}>
-                  <td
+                <li key={index} className={styless.link}>
+                  <Link
+                    href={`/find/${result._id}`}
                     className={cn(
-                      "mb-4 bg-[#FDD901] rounded-xl",
+                      "bg-[#FDD901] rounded-xl flex",
                       styles.shadow
                     )}
                   >
-                    <Link href={`/find/${result._id}`}>
-                      <th className="bg-[#414141] text-[#FDD901] text-sm py-1 px-[84px] border border-[#ECECED]">
-                        {date}
-                      </th>
-                      <th className="bg-[#FDD901] py-1 px-[84px] border border-[#ECECED]">
-                        Стол: {result.tableNum}
-                      </th>
-                      <th className="bg-[#FDD901] py-1 px-[84px] border border-[#ECECED]">
-                        Игра: {result.gameNum}
-                      </th>
-                    </Link>
-                  </td>
-                </tbody>
+                    <div className="bg-[#414141] text-[#FDD901] text-sm py-1 px-[84px] border border-[#ECECED]">
+                      {date}
+                    </div>
+                    <div className="bg-[#FDD901] py-1 px-[84px] border border-[#ECECED]">
+                      Стол: {result.tableNum}
+                    </div>
+                    <div className="bg-[#FDD901] py-1 px-[84px] border border-[#ECECED]">
+                      Игра: {result.gameNum}
+                    </div>
+                  </Link>
+                </li>
               );
             })}
-          </table>
+          </ul>
+        ) : (
+          <Loading />
         )}
         <Pagination page={page} setPage={setPage} results={results.length} />
       </MaxWidthWrapper>

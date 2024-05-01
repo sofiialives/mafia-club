@@ -2,7 +2,7 @@
 import ButtonController from "@/components/Table/ButtonController";
 import InputController from "@/components/Table/InputController";
 import cn from "@/utils/cn";
-import React, { useState } from "react";
+import React from "react";
 import { Control, Controller, FieldValues } from "react-hook-form";
 import styles from "../../Table/input.module.css";
 import { GameProps } from "@/app/find/page";
@@ -16,7 +16,6 @@ interface TournamentProps {
 
 export default function Tournament({ control, game }: TournamentProps) {
   const date = game?.date ? new Date(game.date).toISOString().slice(0, 10) : "";
-
   return (
     <table className="bg-white text-black w-full text-center">
       <tbody>
@@ -60,6 +59,7 @@ export default function Tournament({ control, game }: TournamentProps) {
                 />
               )}
             />
+            {/* <InputController control={control} name="date" type="date" /> */}
           </td>
           <td className="border border-[#CECECE] border-t-0 py-2 font-medium text-sm">
             Стол №

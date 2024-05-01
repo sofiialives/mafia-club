@@ -43,6 +43,7 @@ const buttonVariants = cva(
         btnAuth: "mr-12 text-[#FDD901] font-light text-sm",
         find: "bg-[#414141] py-2 px-12 text-[#FDD901]",
         register: "bg-[#333333] text-[#FDD901] py-5 px-16 rounded",
+        backBtn: "py-2 px-8",
       },
       size: {
         sm: "text-sm font-normal",

@@ -13,8 +13,10 @@ export default async function FindPage({ params }: FindPageProps) {
   const game = await getGameById({ _id });
 
   return (
-    <MaxWidthWrapper className="flex flex-col items-center pt-20">
-      <FindId game={game} />
-    </MaxWidthWrapper>
+    <section className="bg-[#202020]">
+      <MaxWidthWrapper className="flex flex-col items-center pt-20">
+        <FindId game={game} />
+      </MaxWidthWrapper>
+    </section>
   );
 }

@@ -20,16 +20,20 @@ export interface PhaseData {
   revote: number;
 }
 
+export const phases: PhaseData[][] = Array(7)
+  .fill(null)
+  .map(() =>
+    Array(10)
+      .fill(null)
+      .map(() => ({
+        player: 0,
+        vote: 0,
+        revote: 0,
+      }))
+  );
+
 export default function Protocol({}: ProtocolProps) {
   const { handleSubmit, reset, control } = useForm();
-
-  const phases: PhaseData[][] = Array.from({ length: 7 }, () =>
-    Array.from({ length: 10 }, () => ({
-      player: 0,
-      vote: 0,
-      revote: 0,
-    }))
-  );
 
   const onSubmit = (data: any) => {
     if (!data || Object.values(data).some((val) => val === undefined)) {

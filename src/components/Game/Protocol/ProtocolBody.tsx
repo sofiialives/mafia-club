@@ -24,7 +24,10 @@ interface ProtocolBodyProps {
 }
 
 export default function ProtocolBody({ control, game }: ProtocolBodyProps) {
-  const rows = Array.from({ length: 10 }, (_, index) => index + 1);
+  const rows = Array(10)
+    .fill(null)
+    .map((_, index) => index);
+
   const foulTypes = ["firstFoul", "secondFoul", "thirdFoul"];
   const pointsTypes = [
     { name: "points", label: "Балы" },
@@ -34,7 +37,7 @@ export default function ProtocolBody({ control, game }: ProtocolBodyProps) {
     <>
       {rows.map((rowNumber) => (
         <tr key={rowNumber} className="bg-white text-black text-sm">
-          <td className="border border-[#CECECE] p-2">{rowNumber}</td>
+          <td className="border border-[#CECECE] p-2">{rowNumber + 1}</td>
           <td className="border border-[#CECECE] p-2">
             <InputController
               name={`players[${rowNumber}].playerName`}

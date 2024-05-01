@@ -67,7 +67,7 @@ export default function Tournament({ control, game }: TournamentProps) {
               name="tableNum"
               control={control}
               game={game?.tableNum}
-              defaultValue={null}
+              defaultValue=""
               type="number"
               className={cn(
                 styles.shadow,
@@ -81,7 +81,7 @@ export default function Tournament({ control, game }: TournamentProps) {
               name="gameNum"
               control={control}
               game={game?.gameNum}
-              defaultValue={null}
+              defaultValue=""
               type="number"
               className={cn(
                 styles.shadow,

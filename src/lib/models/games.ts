@@ -15,11 +15,9 @@ const gamesSchema = new Schema(
     },
     firstKilled: {
       type: Number,
-      required: true,
     },
     bestMove: {
       type: Array,
-      required: true,
     },
     gameNum: {
       type: Number,
@@ -31,14 +29,12 @@ const gamesSchema = new Schema(
     },
     players: {
       type: Array,
-      required: true,
     },
     winnerTeam: {
       type: String,
     },
     judge: {
       type: String,
-      required: true,
     },
     phases: {
       type: Array,

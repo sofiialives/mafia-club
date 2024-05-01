@@ -13,7 +13,10 @@ interface WinnerTableProps {
 }
 
 export default function WinnerTable({ control, game }: WinnerTableProps) {
-  const bestMoves = Array.from({ length: 3 }, (_, index) => index + 1);
+  const bestMoves = Array(3)
+    .fill(null)
+    .map((_, index) => index);
+
   const [color, setColor] = useState("black");
 
   const handleInputChange = () => {
@@ -78,7 +81,7 @@ export default function WinnerTable({ control, game }: WinnerTableProps) {
                     }
                     control={control}
                     type="number"
-                    defaultValue={null}
+                    defaultValue=""
                     className={cn(
                       styles.shadow,
                       "w-14 h-6 border border-black shadow-inner bg-[#FDD901] rounded-[42px] text-black px-5 py-1 text-center"
@@ -94,7 +97,7 @@ export default function WinnerTable({ control, game }: WinnerTableProps) {
                 control={control}
                 game={game?.firstKilled}
                 type="number"
-                defaultValue={null}
+                defaultValue=""
                 className={cn(
                   styles.shadow,
                   "w-14 h-6 border border-black shadow-inner bg-[#FDD901] rounded-[42px] text-black px-5 py-1 text-center"

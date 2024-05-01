@@ -10,7 +10,10 @@ interface CommentTableProps {
 }
 
 export default function CommentTable({ control, game }: CommentTableProps) {
-  const commentNames = Array.from({ length: 5 }, (_, index) => index + 1);
+  const commentNames = Array(5)
+    .fill(null)
+    .map((_, index) => index);
+
   return (
     <table>
       <thead>

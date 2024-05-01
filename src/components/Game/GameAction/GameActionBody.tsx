@@ -17,7 +17,10 @@ export default function GameActionBody({
   tableIndex,
   game,
 }: GameActionBodyProps) {
-  const numbers = Array.from({ length: 10 }, (_, index) => index + 1);
+  const numbers = Array(10)
+    .fill(null)
+    .map((_, index) => index);
+    
   return (
     <tbody>
       <tr>

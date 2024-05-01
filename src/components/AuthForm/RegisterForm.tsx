@@ -10,6 +10,8 @@ import Button from "../Button";
 import { registerUser } from "@/lib/auth/action";
 import clsx from "clsx";
 import { useForm } from "react-hook-form";
+import { useRouter } from "next/navigation";
+
 
 const schema = Joi.object({
   name: Joi.string()
@@ -44,10 +46,12 @@ const RegisterForm = () => {
     resolver: joiResolver(schema),
   });
 
+  const router = useRouter();
+
   const onSubmit = (data: any) => {
-    console.log(data);
     registerUser(data);
     reset();
+    router.push('/');
   };
 
   return (

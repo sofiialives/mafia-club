@@ -1,12 +1,14 @@
-"use client"
+"use client";
 import React from "react";
 import NavLinkItem from "./NavLinkItem";
 import { usePathname } from "next/navigation";
-import { Session } from "next-auth";
+import { useUserContext } from "@/context";
 
-type Props = {
-  session: Session | null;
-};
+
+export interface IsAdminInterface {
+ isAdmin: boolean 
+}
+
 const navMenu = [
   { id: "main", href: "/", title: "Главная" },
   { id: "about", href: "/#about", title: "О клубе" },
@@ -14,8 +16,10 @@ const navMenu = [
   { id: "find", href: "/find", title: "Найти игру" },
 ];
 
-const NavBar = ({ session }: Props) => {
+const NavBar = ({ isAdmin }: IsAdminInterface) => {
   const pathname = usePathname();
+
+
   return (
     <nav>
       <ul className="flex gap-1">
@@ -28,7 +32,7 @@ const NavBar = ({ session }: Props) => {
             current={pathname === menu.href}
           />
         ))}
-        {session?.user.isAdmin && (
+        {isAdmin && (
           <NavLinkItem
             title="Играть"
             href="/game"

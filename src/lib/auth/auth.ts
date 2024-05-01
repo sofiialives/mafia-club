@@ -5,14 +5,21 @@ import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import authConfig from "./auth.config";
 
-const login = async (credentials: { email: string; password: string }) => {
+interface ILogin {
+  email: string;
+  password: string;}
+
+
+const login = async ({email, password}: ILogin ) => {
   try {
+    
+
     dbConnect();
-    const user = await User.findOne({ email: credentials.email });
+    const user = await User.findOne({ email });
     if (!user) throw new Error("Email doesn't exist!");
 
     const isPasswordCorrect = await bcrypt.compare(
-      credentials.password,
+      password,
       user.password
     );
     if (!isPasswordCorrect) throw new Error("Wrong password!");
@@ -32,9 +39,10 @@ export const {
   ...authConfig,
   providers: [
     CredentialsProvider({
-      async authorize(credentials: { email: string; password: string }) {
+      async authorize(credentials) {
+        const {email, password} = credentials as { email: string, password: string}
         try {
-          const user = await login(credentials);
+          const user = await login({  email,  password});
           return user;
         } catch (error) {
           return null;

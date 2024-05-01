@@ -25,7 +25,7 @@ const images = [
 
 const HomeSlider = (props: Props) => {
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 700,
     slidesToShow: 1,
@@ -42,10 +42,10 @@ const HomeSlider = (props: Props) => {
           <Image
             key={image.id}
             src={image.img}
+            priority={true}
             width={1400}
-            height={500}
             alt="Group foto"
-            className=" object-cover"
+            className=" object-cover h-auto w-[1400px]"
           />
         ))}
       </Slider>

@@ -45,7 +45,6 @@ const LoginForm = () => {
   });
 
   const onSubmit = (data: any) => {
-    console.log(data);
     loginUser(data);
     reset();
   };

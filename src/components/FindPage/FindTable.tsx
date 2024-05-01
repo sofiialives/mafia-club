@@ -5,9 +5,9 @@ import GameProtocolTable from "../Game/Protocol/GameProtocolTable";
 import WinnerTable from "../Game/Winner/WinnerTable";
 import CommentTable from "../Game/Comment/CommentTable";
 import GameActionTable from "../Game/GameAction/GameActionTable";
-import { PhaseData, phases } from "@/app/game/page";
 import { GameProps } from "@/app/find/page";
 import { useForm } from "react-hook-form";
+import { PhaseData } from "@/app/game/page";
 
 interface FindTableProps {
   game: GameProps | undefined;
@@ -15,6 +15,18 @@ interface FindTableProps {
 
 export default function FindTable({ game }: FindTableProps) {
   const { control } = useForm();
+
+  const phases: PhaseData[][] = Array(7)
+    .fill(null)
+    .map(() =>
+      Array(10)
+        .fill(null)
+        .map(() => ({
+          player: 0,
+          vote: 0,
+          revote: 0,
+        }))
+    );
 
   return (
     <form className="py-20">

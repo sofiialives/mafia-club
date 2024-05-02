@@ -20,7 +20,7 @@ export default function GameActionBody({
   const numbers = Array(10)
     .fill(null)
     .map((_, index) => index);
-    
+
   return (
     <tbody>
       <tr>
@@ -35,7 +35,9 @@ export default function GameActionBody({
             <InputController
               name={`phases[${tableIndex}][${number - 1}].player`}
               game={
-                game?.phases ? game.phases[tableIndex][number - 1].player : 0
+                game?.phases &&
+                game.phases[tableIndex] &&
+                game.phases[tableIndex][number - 1]?.player
               }
               control={control}
               defaultValue={0}
@@ -58,7 +60,11 @@ export default function GameActionBody({
           >
             <InputController
               name={`phases[${tableIndex}][${number - 1}].vote`}
-              game={game?.phases ? game.phases[tableIndex][number - 1].vote : 0}
+              game={
+                game?.phases &&
+                game.phases[tableIndex] &&
+                game.phases[tableIndex][number - 1]?.vote
+              }
               control={control}
               defaultValue={0}
               type="number"
@@ -81,7 +87,9 @@ export default function GameActionBody({
             <InputController
               name={`phases[${tableIndex}][${number - 1}].revote`}
               game={
-                game?.phases ? game.phases[tableIndex][number - 1].revote : 0
+                game?.phases &&
+                game.phases[tableIndex] &&
+                game.phases[tableIndex][number - 1]?.revote
               }
               control={control}
               defaultValue={0}

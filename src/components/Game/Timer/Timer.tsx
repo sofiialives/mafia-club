@@ -86,6 +86,7 @@ export default function Timer({}: TimerProps) {
         <div className="text-white flex items-center gap-1">
           вкл
           <Button
+            type="button"
             variant="radio"
             className={cn(styles.shadow, soundEnabled && "bg-[#FDD901]")}
             onClick={() => setSoundEnabled(true)}
@@ -94,6 +95,7 @@ export default function Timer({}: TimerProps) {
         <div className="text-white flex items-center gap-1">
           выкл
           <Button
+            type="button"
             variant="radio"
             className={cn(styles.shadow, !soundEnabled && "bg-[#FDD901]")}
             onClick={() => setSoundEnabled(false)}

@@ -27,7 +27,7 @@ export default function WinnerTable({ control, game }: WinnerTableProps) {
     <table className="w-full bg-white text-black">
       <tbody>
         <tr className="border border-[#CECECE]">
-          <td className="font-medium text-sm flex justify-between items-center p-2">
+          <td className="font-medium text-sm flex justify-between items-center p-2 text-red-500">
             Победившая команда
             <label className="flex items-center gap-2">
               <Controller
@@ -124,7 +124,7 @@ export default function WinnerTable({ control, game }: WinnerTableProps) {
           </td>
         </tr>
         <tr className="border border-[#CECECE]">
-          <td className="font-medium text-sm flex justify-between p-2">
+          <td className="font-medium text-sm flex justify-between p-2 text-red-500">
             Судья
             <InputController
               name="judge"

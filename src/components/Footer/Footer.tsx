@@ -21,7 +21,6 @@ const socials = [
     href: "https://youtube.com/@mafiaclub.budapest?si=CrUIjPgqWdIqDoP8",
   },
   { id: "telegram", img: Telegram, href: "https://t.me/mafiabudapestchat" },
-  { id: "tiktok", img: Tiktok, href: "http://tiktok.com" },
 ];
 
 const links = [

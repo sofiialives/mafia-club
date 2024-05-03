@@ -23,7 +23,10 @@ export default function Pagination({
         type="button"
         onClick={() => setPage((prev) => prev - 1)}
         disabled={page === 1}
-        className={styles.shadow}
+        className={cn(
+          styles.shadow,
+          "cursor-pointer hover:text-black border-none hover:shadow-[0px_0px_5px_5px_#FDD901]"
+        )}
       >
         <Image src={leftArrow} alt="left-arrow" width={20} height={20} />
       </Button>
@@ -38,7 +41,10 @@ export default function Pagination({
       <Button
         onClick={() => setPage((prev) => prev + 1)}
         disabled={results !== 10}
-        className={styles.shadow}
+        className={cn(
+          styles.shadow,
+          "cursor-pointer hover:text-black border-none hover:shadow-[0px_0px_5px_5px_#FDD901]"
+        )}
       >
         <Image src={rightArrow} alt="right-arrow" width={20} height={20} />
       </Button>

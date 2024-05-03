@@ -40,7 +40,9 @@ export default function Protocol({}: ProtocolProps) {
       Swal.fire({
         icon: "error",
         title: "Упс...",
-        text: "Данные отсутствуют или содержат пустые значения!",
+        text: "Поля выделенные красным не должны быть пустыми!",
+        background: "#000",
+        confirmButtonColor: "#FDD901",
       });
       return;
     }
@@ -50,6 +52,7 @@ export default function Protocol({}: ProtocolProps) {
       showCancelButton: true,
       confirmButtonText: "Сохранять",
       denyButtonText: "Не сохранять",
+      background: "#000",
       customClass: {
         confirmButton: "bg-green-500 hover:bg-green-600",
       },
@@ -57,7 +60,13 @@ export default function Protocol({}: ProtocolProps) {
       if (result.isConfirmed) {
         postGame(data)
           .then(() => {
-            Swal.fire("Сохранено!", "", "success");
+            Swal.fire({
+              title: "Сохранено!",
+              text: "Игра была успешно сохранена!",
+              icon: "success",
+              confirmButtonColor: "#FDD901",
+              background: "#000",
+            });
           })
           .catch(() => {
             Swal.fire({
@@ -80,6 +89,7 @@ export default function Protocol({}: ProtocolProps) {
       position: "top-end",
       icon: "success",
       title: "Информация была успешно сброшена!",
+      background: "#000",
       showConfirmButton: false,
       timer: 1000,
       width: 350,
@@ -114,7 +124,10 @@ export default function Protocol({}: ProtocolProps) {
               <Button
                 variant="secondary"
                 type="reset"
-                className={styles.shadow}
+                className={
+                  (styles.shadow,
+                  "hover:bg-[#FDD901] hover:text-black border-none hover:shadow-[0px_0px_5px_5px_#FDD901]")
+                }
                 onClick={handleReset}
               >
                 Сбросить игру
@@ -122,7 +135,10 @@ export default function Protocol({}: ProtocolProps) {
               <Button
                 variant="secondary"
                 type="submit"
-                className={styles.shadow}
+                className={
+                  (styles.shadow,
+                  "hover:bg-[#FDD901] hover:text-black border-none hover:shadow-[0px_0px_5px_5px_#FDD901]")
+                }
               >
                 Сохранить игру
               </Button>

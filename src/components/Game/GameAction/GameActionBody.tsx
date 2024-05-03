@@ -25,7 +25,7 @@ export default function GameActionBody({
     <tbody>
       <tr>
         <td className="text-[#FDD901] bg-[#414141] border border-[#CECECE] p-2 w-[120px]">
-          Игрок
+          Игрок №
         </td>
         {numbers.map((number) => (
           <td
@@ -51,7 +51,7 @@ export default function GameActionBody({
       </tr>
       <tr>
         <td className="text-yellow-400 bg-[#414141] border border-[#CECECE] p-2">
-          Голос
+         К-во голосов
         </td>
         {numbers.map((number) => (
           <td

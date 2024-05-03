@@ -32,9 +32,11 @@ const gamesSchema = new Schema(
     },
     winnerTeam: {
       type: String,
+      required: true,
     },
     judge: {
       type: String,
+      required: true,
     },
     phases: {
       type: Array,

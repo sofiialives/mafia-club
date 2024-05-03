@@ -1,6 +1,6 @@
 export const postGame = async (gameData: any) => {
   try {
-    const res = await fetch(`https://mafia-club.vercel.app/api/games`, {
+    const res = await fetch(`/api/games`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,7 +30,7 @@ export const getGame = async ({
   page?: number;
 } = {}) => {
   try {
-    let url = `https://mafia-club.vercel.app/api/games?page=${page}`;
+    let url = `/api/games?page=${page}`;
 
     if (date || gameNum || tableNum) {
       url += `&`;
@@ -55,7 +55,7 @@ export const getGame = async ({
 
 export const getGameById = async ({ _id }: { _id?: string }) => {
   try {
-    const res = await fetch(`https://mafia-club.vercel.app/api/games/${_id}`, {
+    const res = await fetch(`/api/games/${_id}`, {
       next: { revalidate: 3600 },
     });
     if (!res.ok) {

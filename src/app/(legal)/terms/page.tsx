@@ -8,7 +8,7 @@ const TermsPage = (props: Props) => {
     <main>
       <section>
         <MaxWidthWrapper>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center pb-10">
             <h1 className="text-[32px]  text-[#FDD901] font-normal leading-10 mb-8">
               Политика использования
             </h1>

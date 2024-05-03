@@ -46,12 +46,13 @@ export default function ProtocolBody({ control, game }: ProtocolBodyProps) {
               defaultValue=""
               placeholder="Никнейм"
               type="text"
-              className="w-32"
+              className="w-32 cursor-text"
             />
           </td>
           <td className="border border-[#CECECE] p-2">
             <SelectController
               name={`players[${rowNumber}].role`}
+              className="cursor-pointer"
               control={control}
               game={game?.players[rowNumber].role}
               defaultValue={"Мирный"}

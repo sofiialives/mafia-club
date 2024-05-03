@@ -33,8 +33,9 @@ export default function FindForm({ onSubmit }: FindFormProps) {
           selected={selectedDate}
           onChange={handleDateChange}
           dateFormat="dd/MM/yyyy"
+          placeholderText="Выберите дату игры"
           className={cn(
-            "w-[126px] bg-[#FDD901] rounded-[42px] text-black text-center border border-black py-2 px-4",
+            "w-[126px] bg-[#FDD901] rounded-[42px] text-black text-center border border-black py-2 px-4 w-[150px] cursor-pointer",
             styles.shadow
           )}
         />
@@ -59,7 +60,9 @@ export default function FindForm({ onSubmit }: FindFormProps) {
           )}
         />
       </div>
-      <Button variant="find">Найти игру</Button>
+      <Button variant="find" className="cursor-pointer hover:border-[#FDD901]">
+        Найти игру
+      </Button>
     </form>
   );
 }

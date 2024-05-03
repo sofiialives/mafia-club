@@ -8,7 +8,7 @@ const PrivacyPage = (props: Props) => {
     <main>
       <section>
         <MaxWidthWrapper>
-          <div>
+          <div className="pb-10">
             <h1 className="text-[32px]  text-[#FDD901] font-normal leading-10 mb-8">
               Политика кофидициальности
             </h1>

@@ -45,7 +45,7 @@ export default function Tournament({ control, game }: TournamentProps) {
           </td>
         </tr>
         <tr>
-          <td className="border border-[#CECECE] border-t-0 py-2 font-medium text-sm">
+          <td className="border border-[#CECECE] border-t-0 py-1 font-medium text-sm">
             <Controller
               name="date"
               control={control}
@@ -54,14 +54,14 @@ export default function Tournament({ control, game }: TournamentProps) {
                   selected={!date ? field.value : date}
                   onChange={(date) => field.onChange(date)}
                   dateFormat="dd/MM/yyyy"
-                  placeholderText="Календар"
-                  className="w-20"
+                  placeholderText="Выберите дату"
+                  className="w-[120px]  placeholder-red-500 placeholder:text-sm cursor-pointer hover:placeholder:text-[16px]"
                 />
               )}
             />
             {/* <InputController control={control} name="date" type="date" /> */}
           </td>
-          <td className="border border-[#CECECE] border-t-0 py-2 font-medium text-sm">
+          <td className="border border-[#CECECE] border-t-0 py-2 font-medium text-sm text-red-500">
             Стол №
             <InputController
               name="tableNum"
@@ -75,7 +75,7 @@ export default function Tournament({ control, game }: TournamentProps) {
               )}
             />
           </td>
-          <td className="border border-[#CECECE] border-t-0 py-2 font-medium text-sm">
+          <td className="border border-[#CECECE] border-t-0 py-2 font-medium text-sm text-red-500">
             Игра №
             <InputController
               name="gameNum"

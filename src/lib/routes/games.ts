@@ -1,6 +1,6 @@
 export const postGame = async (gameData: any) => {
   try {
-    const res = await fetch(`/api/games`, {
+    const res = await fetch("/api/games", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -14,7 +14,8 @@ export const postGame = async (gameData: any) => {
 
     return res.json();
   } catch (err) {
-    console.log(err);
+    console.error("Post Game Error:", err);
+    throw err;
   }
 };
 
@@ -30,39 +31,41 @@ export const getGame = async ({
   page?: number;
 } = {}) => {
   try {
-    let url = `/api/games?page=${page}`;
+    let url = `/api/games?page=${page || 1}`;
+    if (date) url += `&date=${date.toISOString()}`;
+    if (gameNum) url += `&gameNum=${gameNum}`;
+    if (tableNum) url += `&tableNum=${tableNum}`;
 
-    if (date || gameNum || tableNum) {
-      url += `&`;
-      if (date) url += `date=${date}&`;
-      if (gameNum) url += `gameNum=${gameNum}&`;
-      if (tableNum) url += `tableNum=${tableNum}&`;
-    }
     const res = await fetch(url, {
-      next: { revalidate: 3600 },
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
     });
 
     if (!res.ok) {
       throw new Error("Something went wrong");
     }
 
-    const games = await res.json();
-    return games;
+    return res.json();
   } catch (err) {
-    console.log(err);
+    console.error("Get Game Error:", err);
+    throw err;
   }
 };
 
 export const getGameById = async ({ _id }: { _id?: string }) => {
   try {
     const res = await fetch(`/api/games/${_id}`, {
-      next: { revalidate: 3600 },
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
     });
+
     if (!res.ok) {
       throw new Error("Something went wrong");
     }
-    return await res.json();
+
+    return res.json();
   } catch (err) {
-    console.log(err);
+    console.error("Get Game By ID Error:", err);
+    throw err;
   }
 };
